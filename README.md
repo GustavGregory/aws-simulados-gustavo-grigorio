@@ -34,14 +34,19 @@ Este projeto foi construído do zero, utilizando as seguintes tecnologias:
 * **Assistente de IA:**
     * `Google Gemini`: Utilizado como parceiro de estudos para a geração e refinamento do conteúdo das questões e na estruturação do código.
 
-## 🚀 Hospedagem na AWS
+## ☕ Gostou do Projeto? Me Pague um Café!
 
-Além do código-fonte disponível aqui, a versão "ao vivo" deste simulado está hospedada na AWS, utilizando uma arquitetura serverless, de baixo custo e alta performance:
+Este projeto foi criado com muito carinho e dedicação com o objetivo de ajudar outros estudantes na jornada para a certificação AWS, e será **sempre gratuito**.
 
-* **Amazon S3:** Para hospedagem do site estático (HTML, CSS, JS).
-* **Amazon CloudFront:** Para distribuição global do conteúdo (CDN), garantindo baixa latência para usuários em qualquer lugar.
-* **Amazon Route 53:** (Opcional) Para gerenciamento do domínio personalizado.
-* **AWS Certificate Manager (ACM):** (Opcional) Para o certificado SSL/TLS gratuito, garantindo acesso via HTTPS.
+Se este material te ajudou de alguma forma e você sentir no coração o desejo de contribuir, uma "ajuda de custo" para um café será um grande incentivo para eu continuar desenvolvendo e compartilhando mais ferramentas como esta.
+
+Você pode fazer uma contribuição de qualquer valor através do PIX abaixo.
+
+<p align="center">
+  <img src="C:\Users\grego\Desktop\simulados aws\AWS-simulado" alt="QR Code PIX" width="200"/>
+</p>
+
+Muito obrigado pelo seu apoio e bons estudos! 🚀
 
 ## 🌟 Como Contribuir
 
