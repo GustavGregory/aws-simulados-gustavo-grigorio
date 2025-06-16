@@ -1,7 +1,5 @@
 # 🚀 Simulado Interativo para Certificação AWS Cloud Practitioner (CLF-C02)
 
-## 🎯 Sobre o Projeto
-
 Bem-vindo ao meu repositório de estudos para a certificação **AWS Certified Cloud Practitioner**!
 
 Este projeto nasceu da minha jornada pessoal de aprendizado e foi criado para ser uma ferramenta de treino poderosa e interativa. O objetivo é ajudar a mim e a outros estudantes a solidificar o conhecimento sobre os principais serviços, conceitos e melhores práticas da AWS, simulando a experiência do exame de certificação.
@@ -48,9 +46,12 @@ Você pode fazer uma contribuição de qualquer valor através do PIX abaixo.
 
 Muito obrigado pelo seu apoio e bons estudos! 🚀
 
+
 ## 🌟 Como Contribuir
 
 Este é um projeto para a comunidade. Se você encontrou algum erro, tem sugestões de novas perguntas ou melhorias, sinta-se à vontade para abrir uma *Issue* ou um *Pull Request*!
 
 ---
+
+
 **Observação:** Este projeto foi criado como uma ferramenta de estudo pessoal e para a comunidade. Ele não é um produto oficial da AWS.
