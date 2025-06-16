@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Final Completo - AWS Cloud Practitioner</title>
+    <style>
+        body {
+            background-color: #000000; /* Fundo TOTALMENTE PRETO */
+            color: #e0e0e0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #121212;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        h1 {
+            text-align: center;
+            color: #ff9900; /* Cor Laranja AWS */
+            border-bottom: 2px solid #ff9900;
+            padding-bottom: 10px;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .question-container {
+            background-color: #1e1e1e;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 5px solid #5865f2;
+        }
+        .question-text {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #FFD700; /* Amarelo/Dourado */
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 5px;
+            border: 2px solid #444;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .options label:hover {
+            background-color: #333;
+            border-color: #ff9900;
+        }
+        .options input[type="radio"], .options input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+            accent-color: #ff9900;
+        }
+        button {
+            background-color: #ff9900;
+            color: #111;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e68a00;
+        }
+        .answer-explanation {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0a0a0a;
+            border: 1px solid #43b581;
+            border-radius: 5px;
+            display: none; /* Inicia oculto */
+        }
+        .answer-line {
+            font-weight: bold;
+            color: #28a745; /* Verde para a resposta correta */
+        }
+        .explanation-line {
+            margin-top: 12px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🏆 Simulado Final - COMPLETO 100 Questões 🏆</h1>
+        <div class="controls">
+            <button onclick="location.reload()">Refazer Simulado</button>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">1. O que melhor define "computação em nuvem"?</p>
+            <div class="options">
+                <label><input type="radio" name="q1"> A) Um software para virtualizar servidores em um data center local.</label>
+                <label data-correct="true"><input type="radio" name="q1"> B) O fornecimento sob demanda de recursos de TI pela internet com um modelo de pagamento conforme o uso.</label>
+                <label><input type="radio" name="q1"> C) Uma rede privada que conecta múltiplos escritórios de uma empresa.</label>
+                <label><input type="radio" name="q1"> D) Um modelo de licenciamento de software perpétuo.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) O fornecimento sob demanda de recursos de TI pela internet com um modelo de pagamento conforme o uso.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Esta é a definição padrão. "Sob demanda" significa que você obtém recursos quando precisa, "pela internet" é o meio de entrega, e "pagamento conforme o uso" é o modelo de preços fundamental.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">2. Um ambiente de TI hospedado e gerenciado no data center de uma própria organização é também conhecido como:</p>
+            <div class="options">
+                <label><input type="radio" name="q2"> A) Nuvem pública</label>
+                <label><input type="radio" name="q2"> B) Nuvem híbrida</label>
+                <label data-correct="true"><input type="radio" name="q2"> C) Nuvem privada</label>
+                <label><input type="radio" name="q2"> D) Nuvem comunitária</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Implantação de nuvem privada</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Um ambiente on-premises é conceitualmente uma nuvem privada, pois a infraestrutura é dedicada e não compartilhada com outros "inquilinos" ou clientes.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">3. Qual benefício da nuvem é alcançado porque a AWS pode comprar hardware em grande volume, repassando a economia de custos para os clientes?</p>
+            <div class="options">
+                <label><input type="radio" name="q3"> A) Agilidade</label>
+                <label data-correct="true"><input type="radio" name="q3"> B) Economias de escala massivas</label>
+                <label><input type="radio" name="q3"> C) Elasticidade</label>
+                <label><input type="radio" name="q3"> D) Alcance Global</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Economias de escala massivas</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O uso agregado da nuvem por centenas de milhares de clientes permite que a AWS alcance economias de escala, resultando em preços mais baixos no modelo pague-pelo-uso.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">4. Uma empresa precisa executar uma aplicação de data warehousing que realiza leituras e escritas intensivas em grandes volumes de dados no disco. Qual família de instâncias EC2 é a mais adequada?</p>
+            <div class="options">
+                <label><input type="radio" name="q4"> A) Otimizada para computação</label>
+                <label><input type="radio" name="q4"> B) Otimizada para memória</label>
+                <label data-correct="true"><input type="radio" name="q4"> C) Otimizada para armazenamento</label>
+                <label><input type="radio" name="q4"> D) Uso geral</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Otimizada para armazenamento</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Instâncias otimizadas para armazenamento são projetadas com armazenamento local de alta densidade e alto throughput, ideais para workloads como data warehousing e processamento de grandes conjuntos de dados.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">5. Para uma aplicação web com tráfego imprevisível, qual família de instâncias EC2 oferece um equilíbrio entre computação, memória e rede?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q5"> A) Uso geral</label>
+                <label><input type="radio" name="q5"> B) Otimizada para computação</label>
+                <label><input type="radio" name="q5"> C) Otimizada para armazenamento</label>
+                <label><input type="radio" name="q5"> D) Otimizada para memória</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Uso geral</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Instâncias de uso geral são o ponto de partida ideal para a maioria das aplicações, como servidores web, pois fornecem um balanço entre os principais recursos.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">6. Uma aplicação de análise de dados in-memory processa grandes volumes de dados em tempo real. A performance depende da quantidade de RAM. Qual família de instâncias EC2 é a melhor escolha?</p>
+            <div class="options">
+                <label><input type="radio" name="q6"> A) Otimizada para computação</label>
+                <label data-correct="true"><input type="radio" name="q6"> B) Otimizada para memória</label>
+                <label><input type="radio" name="q6"> C) Otimizada para armazenamento</label>
+                <label><input type="radio" name="q6"> D) Uso geral</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Otimizada para memória</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Bancos de dados de alto desempenho e aplicações in-memory se beneficiam de instâncias otimizadas para memória (famílias R, X, Z), que oferecem a maior quantidade de RAM pelo menor custo por GiB.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">7. Uma empresa está executando um servidor de jogos online que requer a menor latência de rede e os processadores mais rápidos disponíveis. Qual família de instâncias EC2 deve ser considerada?</p>
+            <div class="options">
+                <label><input type="radio" name="q7"> A) Uso geral</label>
+                <label><input type="radio" name="q7"> B) Otimizada para memória</label>
+                <label data-correct="true"><input type="radio" name="q7"> C) Otimizada para computação</label>
+                <label><input type="radio" name="q7"> D) Otimizada para armazenamento</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Otimizada para computação</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Instâncias otimizadas para computação possuem a maior proporção de vCPUs para memória e são ideais para workloads que exigem muito poder de processamento, como servidores de jogos e computação de alto desempenho (HPC).</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">8. Uma empresa precisa de um desconto para uma carga de trabalho EC2 estável, mas quer a flexibilidade de mudar o tamanho da instância (ex: de m5.large para m5.xlarge) dentro da mesma família e região. Qual opção de preço é a mais adequada?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q8"> A) Instâncias Reservadas Standard</label>
+                <label><input type="radio" name="q8"> B) Instâncias Spot</label>
+                <label><input type="radio" name="q8"> C) Instâncias Sob Demanda</label>
+                <label><input type="radio" name="q8"> D) Host Dedicado</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Instâncias Reservadas Standard</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As Instâncias Reservadas Standard oferecem um grande desconto ao se comprometer com uma família de instância e região, mas permitem a flexibilidade de alterar o tamanho da instância dentro dessa mesma família.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">9. Qual modelo de compra oferece o maior desconto, mas com o risco da instância ser interrompida pela AWS?</p>
+            <div class="options">
+                <label><input type="radio" name="q9"> A) Instâncias Reservadas</label>
+                <label><input type="radio" name="q9"> B) Instâncias Sob Demanda</label>
+                <label data-correct="true"><input type="radio" name="q9"> C) Instâncias Spot</label>
+                <label><input type="radio" name="q9"> D) Savings Plans</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Instâncias Spot</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As Instâncias Spot utilizam a capacidade ociosa da AWS e por isso oferecem os maiores descontos (até 90%). O contraponto é que elas podem ser terminadas pela AWS com um aviso de dois minutos se a capacidade for necessária.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">10. Qual serviço da AWS é projetado para enviar notificações para um grande número de assinantes através de múltiplos protocolos como HTTP, e-mail e SMS?</p>
+            <div class="options">
+                <label><input type="radio" name="q10"> A) Amazon SQS</label>
+                <label><input type="radio" name="q10"> B) AWS Step Functions</label>
+                <label data-correct="true"><input type="radio" name="q10"> C) Amazon SNS</label>
+                <label><input type="radio" name="q10"> D) Amazon CloudWatch</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Amazon SNS</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Simple Notification Service (SNS) utiliza um modelo de publicação/assinatura (pub/sub) onde uma única mensagem publicada em um tópico é distribuída para múltiplos assinantes em diferentes endpoints.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">11. Uma empresa precisa executar uma tarefa de renderização de vídeo que leva várias horas, mas pode ser interrompida e reiniciada sem problemas. Qual é a opção de compra de EC2 mais econômica para esta tarefa?</p>
+            <div class="options">
+                <label><input type="radio" name="q11"> A) Instância Sob Demanda</label>
+                <label data-correct="true"><input type="radio" name="q11"> B) Instância Spot</label>
+                <label><input type="radio" name="q11"> C) Instância Reservada</label>
+                <label><input type="radio" name="q11"> D) Host Dedicado</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Instância Spot</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As Instâncias Spot são ideais para cargas de trabalho que são tolerantes a falhas e interrupções, como processamento em lote e renderização, pois oferecem os maiores descontos.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">12. Qual serviço da AWS é usado para orquestrar e gerenciar aplicações em contêineres usando Kubernetes?</p>
+            <div class="options">
+                <label><input type="radio" name="q12"> A) Amazon ECS</label>
+                <label data-correct="true"><input type="radio" name="q12"> B) Amazon EKS</label>
+                <label><input type="radio" name="q12"> C) AWS Fargate</label>
+                <label><input type="radio" name="q12"> D) Amazon ECR</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Amazon EKS</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Elastic Kubernetes Service (EKS) é o serviço gerenciado que facilita a execução do Kubernetes na AWS sem precisar instalar e operar seu próprio plano de controle do Kubernetes.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">13. Qual conceito da infraestrutura global da AWS representa um ou mais data centers discretos, com energia, refrigeração e rede redundantes, localizados dentro de uma Região?</p>
+            <div class="options">
+                <label><input type="radio" name="q13"> A) Local de Borda</label>
+                <label data-correct="true"><input type="radio" name="q13"> B) Zona de Disponibilidade (AZ)</label>
+                <label><input type="radio" name="q13"> C) Ponto de Presença (PoP)</label>
+                <label><input type="radio" name="q13"> D) VPC</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Zona de Disponibilidade (AZ)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Uma Zona de Disponibilidade (AZ) é uma infraestrutura fisicamente distinta e isolada dentro de uma Região da AWS. Utilizar múltiplas AZs é a base para construir aplicações de alta disponibilidade.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">14. Qual é a principal função do Amazon CloudFront?</p>
+            <div class="options">
+                <label><input type="radio" name="q14"> A) Balancear a carga entre servidores web.</label>
+                <label><input type="radio" name="q14"> B) Proteger a rede contra ataques na camada de aplicação.</label>
+                <label data-correct="true"><input type="radio" name="q14"> C) Acelerar a entrega de conteúdo estático e dinâmico para usuários globais.</label>
+                <label><input type="radio" name="q14"> D) Fornecer uma conexão de rede privada para a AWS.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Acelerar a entrega de conteúdo estático e dinâmico para usuários globais.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O CloudFront é a Rede de Entrega de Conteúdo (CDN) da AWS. Ele armazena conteúdo em cache nos locais de borda para entregá-lo aos usuários a partir do ponto mais próximo, reduzindo a latência.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">15. Para que uma empresa usaria o AWS Outposts?</p>
+            <div class="options">
+                <label><input type="radio" name="q15"> A) Para migrar dados em escala de petabytes para a nuvem.</label>
+                <label><input type="radio" name="q15"> B) Para obter relatórios de conformidade da AWS.</label>
+                <label><input type="radio" name="q15"> C) Para criar uma conexão VPN com a AWS.</label>
+                <label data-correct="true"><input type="radio" name="q15"> D) Para executar serviços e infraestrutura da AWS em seu próprio data center.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Para executar serviços e infraestrutura da AWS em seu próprio data center.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Outposts é uma solução de nuvem híbrida que estende a infraestrutura e os serviços da AWS para o ambiente on-premises do cliente, proporcionando uma experiência consistente.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">16. Qual é a principal característica de uma Network ACL (NACL) padrão em uma VPC?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q16"> A) É stateless e permite todo o tráfego por padrão.</label>
+                <label><input type="radio" name="q16"> B) É stateful e nega todo o tráfego por padrão.</label>
+                <label><input type="radio" name="q16"> C) Opera no nível da instância EC2.</label>
+                <label><input type="radio" name="q16"> D) Permite apenas regras de "Allow".</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) É stateless e permite todo o tráfego por padrão.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A NACL padrão é stateless (regras de entrada e saída são avaliadas separadamente) e, por padrão, contém regras que permitem todo o tráfego de entrada e saída.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">17. Qual serviço atua como a "lista telefônica" da internet, traduzindo nomes de domínio como `www.exemplo.com` em endereços IP?</p>
+            <div class="options">
+                <label><input type="radio" name="q17"> A) Amazon VPC</label>
+                <label data-correct="true"><input type="radio" name="q17"> B) Amazon Route 53</label>
+                <label><input type="radio" name="q17"> C) AWS Direct Connect</label>
+                <label><input type="radio" name="q17"> D) Elastic Load Balancing</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Amazon Route 53</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Route 53 é o serviço de Sistema de Nomes de Domínio (DNS) da AWS, cuja principal função é a resolução de nomes de domínio para endereços IP.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">18. Uma arquitetura segura de múltiplos níveis normalmente coloca servidores web em uma sub-rede pública e servidores de banco de dados em uma sub-rede privada. Por quê?</p>
+            <div class="options">
+                <label><input type="radio" name="q18"> A) Para reduzir os custos de transferência de dados.</label>
+                <label><input type="radio" name="q18"> B) Porque sub-redes privadas têm melhor desempenho de rede.</label>
+                <label data-correct="true"><input type="radio" name="q18"> C) Para proteger os bancos de dados do acesso direto da internet.</label>
+                <label><input type="radio" name="q18"> D) Para permitir que os bancos de dados se comuniquem com outros serviços AWS.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Para proteger os bancos de dados do acesso direto da internet.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Esta é uma prática recomendada de segurança. A sub-rede privada isola recursos de backend, como bancos de dados, do acesso público, permitindo que apenas os servidores web na sub-rede pública se comuniquem com eles.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">19. Qual a principal diferença de escopo entre um Security Group e uma Network ACL (NACL)?</p>
+            <div class="options">
+                <label><input type="radio" name="q19"> A) Security Groups são regionais, NACLs são globais.</label>
+                <label data-correct="true"><input type="radio" name="q19"> B) Security Groups operam no nível da instância, enquanto NACLs operam no nível da sub-rede.</label>
+                <label><input type="radio" name="q19"> C) Security Groups são para tráfego de saída, NACLs são para tráfego de entrada.</label>
+                <label><input type="radio" name="q19"> D) Security Groups são stateless, NACLs são stateful.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Security Groups operam no nível da instância, enquanto NACLs operam no nível da sub-rede.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Essa é a diferença fundamental. Um Security Group atua como um firewall para uma ou mais instâncias, enquanto uma NACL atua como um firewall para uma ou mais sub-redes, controlando o tráfego que entra e sai da sub-rede.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">20. Qual serviço é usado para armazenamento de objetos e é ideal para backups, arquivamento e hospedagem de sites estáticos?</p>
+            <div class="options">
+                <label><input type="radio" name="q20"> A) Amazon EBS</label>
+                <label><input type="radio" name="q20"> B) Amazon EFS</label>
+                <label><input type="radio" name="q20"> C) Amazon RDS</label>
+                <label data-correct="true"><input type="radio" name="q20"> D) Amazon S3</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Amazon S3</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Simple Storage Service (S3) é o serviço de armazenamento de objetos da AWS, projetado para durabilidade massiva e uma ampla gama de casos de uso, incluindo os mencionados.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">21. Para qual tipo de banco de dados o Amazon RDS é utilizado?</p>
+            <div class="options">
+                <label><input type="radio" name="q21"> A) NoSQL</label>
+                <label data-correct="true"><input type="radio" name="q21"> B) Relacional</label>
+                <label><input type="radio" name="q21"> C) De Grafos</label>
+                <label><input type="radio" name="q21"> D) De Documentos</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Relacional</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Relational Database Service (RDS) é projetado para simplificar a configuração, operação e escalabilidade de bancos de dados relacionais na nuvem, como MySQL, PostgreSQL e Aurora.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">22. Qual classe de armazenamento do S3 é a mais barata e projetada para arquivamento de longo prazo, onde um tempo de recuperação de várias horas é aceitável?</p>
+            <div class="options">
+                <label><input type="radio" name="q22"> A) S3 Standard</label>
+                <label><input type="radio" name="q22"> B) S3 Standard-IA</label>
+                <label><input type="radio" name="q22"> C) S3 Glacier Flexible Retrieval</label>
+                <label data-correct="true"><input type="radio" name="q22"> D) S3 Glacier Deep Archive</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) S3 Glacier Deep Archive</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O S3 Glacier Deep Archive oferece o menor custo de armazenamento na AWS, sendo ideal para arquivamento de dados que raramente são acessados e não requerem recuperação imediata.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">23. Uma aplicação requer um banco de dados NoSQL totalmente gerenciado, sem servidor, com desempenho de baixa latência. Qual serviço é a melhor escolha?</p>
+            <div class="options">
+                <label><input type="radio" name="q23"> A) Amazon RDS</label>
+                <label><input type="radio" name="q23"> B) Amazon Redshift</label>
+                <label data-correct="true"><input type="radio" name="q23"> C) Amazon DynamoDB</label>
+                <label><input type="radio" name="q23"> D) Amazon Neptune</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Amazon DynamoDB</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon DynamoDB é um serviço de banco de dados de chave-valor e documentos (NoSQL) que é sem servidor e oferece desempenho de milissegundos de um dígito em qualquer escala.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">24. Qual é a principal responsabilidade do cliente ao usar o Amazon S3?</p>
+            <div class="options">
+                <label><input type="radio" name="q24"> A) Garantir a durabilidade dos dados.</label>
+                <label><input type="radio" name="q24"> B) Gerenciar a infraestrutura física de armazenamento.</label>
+                <label data-correct="true"><input type="radio" name="q24"> C) Configurar corretamente as permissões de acesso aos buckets e objetos.</label>
+                <label><input type="radio" name="q24"> D) Replicar os dados entre Regiões.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Configurar corretamente as permissões de acesso aos buckets e objetos.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Pelo Modelo de Responsabilidade Compartilhada, o cliente é responsável por seus dados, o que inclui gerenciar o acesso a eles através de políticas de bucket, ACLs e outras configurações de segurança.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">25. Qual das seguintes tarefas é apropriada para um Perfil (Role) do IAM?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q25"> A) Conceder a uma instância EC2 acesso temporário para escrever logs no Amazon S3.</label>
+                <label><input type="radio" name="q25"> B) Criar uma identidade permanente para um novo funcionário.</label>
+                <label><input type="radio" name="q25"> C) Agrupar vários usuários com as mesmas permissões.</label>
+                <label><input type="radio" name="q25"> D) Proteger a conta raiz com uma segunda forma de autenticação.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Conceder a uma instância EC2 acesso temporário para escrever logs no Amazon S3.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Perfis (Roles) do IAM são o método ideal e seguro para permitir que serviços da AWS (como o EC2) acessem outros serviços da AWS (como o S3) em seu nome, usando credenciais temporárias.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">26. Qual afirmação descreve CORRETAMENTE a diferença fundamental de disponibilidade entre Amazon EBS e Amazon EFS?</p>
+            <div class="options">
+                <label><input type="radio" name="q26"> A) Ambos armazenam dados em múltiplas Regiões por padrão.</label>
+                <label><input type="radio" name="q26"> B) O EFS é vinculado a uma única instância EC2, enquanto o EBS pode ser compartilhado.</label>
+                <label><input type="radio" name="q26"> C) O EBS armazena dados em um único data center, enquanto o EFS usa Locais de Borda.</label>
+                <label data-correct="true"><input type="radio" name="q26"> D) Os volumes do EBS são recursos de uma única Zona de Disponibilidade, enquanto os sistemas de arquivos EFS são recursos regionais.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Os volumes do EBS são recursos de uma única Zona de Disponibilidade, enquanto os sistemas de arquivos EFS são recursos regionais.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Esta é uma diferença crucial: um volume EBS existe dentro de uma única AZ. Já um sistema EFS é um recurso regional, acessível por múltiplas instâncias em diferentes AZs simultaneamente, oferecendo maior resiliência.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">27. Uma empresa quer arquivar logs por 10 anos ao menor custo possível. O acesso aos dados é extremamente raro, mas deve ser possível recuperá-los em até 12 horas. Qual classe de armazenamento do Amazon S3 é a mais apropriada?</p>
+            <div class="options">
+                <label><input type="radio" name="q27"> A) S3 Standard</label>
+                <label><input type="radio" name="q27"> B) S3 Standard-IA</label>
+                <label><input type="radio" name="q27"> C) S3 Glacier Flexible Retrieval</label>
+                <label data-correct="true"><input type="radio" name="q27"> D) S3 Glacier Deep Archive</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) S3 Glacier Deep Archive</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O S3 Glacier Deep Archive oferece o menor custo de armazenamento na AWS, sendo ideal para arquivamento de longo prazo de dados que raramente são acessados e cujo tempo de recuperação de horas é aceitável.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">28. Quais são os DOIS principais casos de uso para o Amazon RDS?</p>
+            <div class="options">
+                <label data-correct="true"><input type="checkbox" name="q28"> A) Aplicações que usam a linguagem SQL para consultas.</label>
+                <label><input type="checkbox" name="q28"> B) Armazenamento de arquivos de mídia, como vídeos e imagens.</label>
+                <label data-correct="true"><input type="checkbox" name="q28"> C) Hospedagem gerenciada de bancos de dados como MySQL, PostgreSQL ou Aurora.</label>
+                <label><input type="checkbox" name="q28"> D) Um banco de dados de chave-valor para aplicações web de alta escala.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A e C</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon RDS é o serviço gerenciado para bancos de dados relacionais, que utilizam a linguagem SQL. O Amazon Aurora é um dos mecanismos de banco de dados de alta performance disponíveis dentro do RDS.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">29. Qual das seguintes opções descreve melhor o Amazon DynamoDB?</p>
+            <div class="options">
+                <label><input type="radio" name="q29"> A) Um serviço de data warehouse em escala de petabytes.</label>
+                <label data-correct="true"><input type="radio" name="q29"> B) Um banco de dados NoSQL de chave-valor e de documentos que é sem servidor.</label>
+                <label><input type="radio" name="q29"> C) Um banco de dados relacional gerenciado pela AWS.</label>
+                <label><input type="radio" name="q29"> D) Um serviço de cache em memória.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Um banco de dados NoSQL de chave-valor e de documentos que é sem servidor.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O DynamoDB é o principal serviço de banco de dados NoSQL da AWS. Sua arquitetura "sem servidor" (serverless) significa que o cliente não precisa gerenciar servidores, e ele escala automaticamente.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">30. De acordo com o Modelo de Responsabilidade Compartilhada, quais das seguintes tarefas são de responsabilidade do CLIENTE? (Selecione DUAS)</p>
+            <div class="options">
+                <label><input type="checkbox" name="q30"> A) Manutenção do hardware dos servidores da AWS.</label>
+                <label data-correct="true"><input type="checkbox" name="q30"> B) Configuração de regras de firewall nos Grupos de Segurança.</label>
+                <label><input type="checkbox" name="q30"> C) Segurança física dos data centers.</label>
+                <label data-correct="true"><input type="checkbox" name="q30"> D) Gerenciamento de usuários e permissões no AWS IAM.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B e D</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O cliente é responsável pela segurança "NA" nuvem. Isso inclui como ele configura o acesso à sua infraestrutura (Grupos de Segurança) e como ele gerencia suas identidades e permissões (IAM). A AWS cuida da infraestrutura física.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">31. Qual recurso do AWS Organizations é usado para aplicar restrições de permissões a uma conta ou a uma Unidade Organizacional (UO)?</p>
+            <div class="options">
+                <label><input type="radio" name="q31"> A) Políticas do IAM</label>
+                <label><input type="radio" name="q31"> B) AWS Trusted Advisor</label>
+                <label data-correct="true"><input type="radio" name="q31"> C) Políticas de Controle de Serviço (SCPs)</label>
+                <label><input type="radio" name="q31"> D) AWS Config</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Políticas de Controle de Serviço (SCPs)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As SCPs são como um "guardrail" para as contas em sua organização. Elas definem as permissões máximas que as identidades (usuários ou perfis) dentro de uma conta podem ter.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">32. Qual serviço da AWS um cliente deve usar para baixar relatórios de conformidade de terceiros (como SOC 2 e ISO 27001) sobre a infraestrutura da AWS?</p>
+            <div class="options">
+                <label><input type="radio" name="q32"> A) AWS Security Hub</label>
+                <label><input type="radio" name="q32"> B) AWS CloudTrail</label>
+                <label><input type="radio" name="q32"> C) Amazon Inspector</label>
+                <label data-correct="true"><input type="radio" name="q32"> D) AWS Artifact</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) AWS Artifact</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Artifact é um portal de autoatendimento que fornece acesso sob demanda a relatórios de segurança e conformidade da AWS, bem como a contratos online selecionados.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">33. Qual é a principal função de uma política do IAM?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q33"> A) Definir as permissões (ações e recursos) para uma identidade do IAM.</label>
+                <label><input type="radio" name="q33"> B) Agrupar múltiplos usuários do IAM.</label>
+                <label><input type="radio" name="q33"> C) Habilitar a autenticação multifator para um usuário.</label>
+                <label><input type="radio" name="q33"> D) Criar credenciais de acesso temporárias.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Definir as permissões (ações e recursos) para uma identidade do IAM.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Uma política do IAM é um documento (JSON) que define formalmente as permissões, especificando quais ações uma identidade pode (ou não pode) executar em quais recursos da AWS.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">34. Uma aplicação rodando em uma instância EC2 precisa de permissão temporária para acessar um serviço da AWS. Qual é a prática recomendada para conceder esse acesso de forma segura?</p>
+            <div class="options">
+                <label><input type="radio" name="q34"> A) Armazenar as chaves de acesso de um usuário IAM no código da aplicação.</label>
+                <label><input type="radio" name="q34"> B) Criar um novo usuário IAM com as permissões e usá-lo para a aplicação.</label>
+                <label data-correct="true"><input type="radio" name="q34"> C) Utilizar uma Função do IAM (IAM Role) associada à instância EC2.</label>
+                <label><input type="radio" name="q34"> D) Conceder acesso público ao serviço da AWS.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Utilizar uma Função do IAM (IAM Role) associada à instância EC2.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As Funções (Roles) do IAM são o método mais seguro para conceder permissões a recursos da AWS, como instâncias EC2. Elas fornecem credenciais temporárias que são gerenciadas automaticamente, eliminando a necessidade de armazenar chaves de acesso de longo prazo.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">35. Qual é o princípio de segurança que recomenda conceder a um usuário ou serviço apenas as permissões estritamente necessárias para realizar suas tarefas?</p>
+            <div class="options">
+                <label><input type="radio" name="q35"> A) Responsabilidade compartilhada</label>
+                <label><input type="radio" name="q35"> B) Defesa em profundidade</label>
+                <label data-correct="true"><input type="radio" name="q35"> C) Menor privilégio</label>
+                <label><input type="radio" name="q35"> D) Autenticação multifator</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Menor privilégio</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O princípio de menor privilégio é uma prática de segurança fundamental que visa minimizar o risco, garantindo que as identidades tenham apenas o acesso de que necessitam, e nada mais.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">36. Qual serviço da AWS oferece proteção gerenciada contra ataques de Negação de Serviço Distribuída (DDoS)?</p>
+            <div class="options">
+                <label><input type="radio" name="q36"> A) Amazon Inspector</label>
+                <label><input type="radio" name="q36"> B) AWS WAF</label>
+                <label data-correct="true"><input type="radio" name="q36"> C) AWS Shield</label>
+                <label><input type="radio" name="q36"> D) Amazon GuardDuty</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) AWS Shield</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Shield é o serviço projetado especificamente para proteger aplicações na AWS contra ataques DDoS. O Shield Standard oferece proteção automática e gratuita, enquanto o Shield Advanced oferece proteção aprimorada.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">37. Uma empresa precisa criptografar dados armazenados em seus buckets S3 e controlar centralmente as chaves de criptografia. Qual serviço permite a criação e gerenciamento dessas chaves?</p>
+            <div class="options">
+                <label><input type="radio" name="q37"> A) AWS Secrets Manager</label>
+                <label data-correct="true"><input type="radio" name="q37"> B) AWS Key Management Service (AWS KMS)</label>
+                <label><input type="radio" name="q37"> C) AWS Certificate Manager (ACM)</label>
+                <label><input type="radio" name="q37"> D) AWS IAM</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) AWS Key Management Service (AWS KMS)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS KMS é um serviço gerenciado que facilita a criação e o controle das chaves de criptografia usadas para proteger seus dados em repouso em diversos serviços da AWS, incluindo o S3.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">38. Qual das seguintes tarefas o AWS CloudTrail permite executar? (Selecione DUAS)</p>
+            <div class="options">
+                <label data-correct="true"><input type="checkbox" name="q38"> A) Rastrear a atividade do usuário e as chamadas de API.</label>
+                <label><input type="checkbox" name="q38"> B) Monitorar a utilização de CPU e memória de uma instância EC2.</label>
+                <label><input type="checkbox" name="q38"> C) Criar dashboards de performance em tempo real.</label>
+                <label data-correct="true"><input type="checkbox" name="q38"> D) Filtrar logs para auxiliar na análise operacional e investigações de segurança.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A e D</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O CloudTrail funciona como um log de auditoria, rastreando a atividade do usuário e as chamadas de API. Seus logs podem ser filtrados para encontrar eventos específicos, o que é crucial para análises e investigações. O monitoramento de performance é função do CloudWatch.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">39. Um administrador deseja visualizar métricas de múltiplos serviços da AWS, como EC2, RDS e Lambda, em uma única tela customizável. Qual recurso do Amazon CloudWatch ele deve usar?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q39"> A) Acessar métricas em um único painel (Dashboard).</label>
+                <label><input type="radio" name="q39"> B) Criar um alarme para cada serviço.</label>
+                <label><input type="radio" name="q39"> C) Analisar os logs do CloudTrail.</label>
+                <label><input type="radio" name="q39"> D) Usar o AWS Trusted Advisor.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Acessar métricas em um único painel (Dashboard).</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Os Dashboards do CloudWatch são projetados exatamente para isso: criar visualizações personalizadas que agregam gráficos de métricas de diferentes fontes, proporcionando uma visão consolidada do ambiente.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">40. Qual serviço da AWS atua como um consultor automatizado, inspecionando seu ambiente e fornecendo recomendações para otimização de custos e segurança?</p>
+            <div class="options">
+                <label><input type="radio" name="q40"> A) Amazon Inspector</label>
+                <label><input type="radio" name="q40"> B) AWS Config</label>
+                <label data-correct="true"><input type="radio" name="q40"> C) AWS Trusted Advisor</label>
+                <label><input type="radio" name="q40"> D) Amazon CloudWatch</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) AWS Trusted Advisor</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Trusted Advisor inspeciona seu ambiente AWS e faz recomendações em tempo real de acordo com as melhores práticas da AWS, abrangendo cinco pilares, incluindo otimização de custos e segurança.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">41. O painel do AWS Trusted Advisor inclui quais das seguintes categorias de verificação? (Selecione DUAS)</p>
+            <div class="options">
+                <label><input type="checkbox" name="q41"> A) Análise de Código</label>
+                <label data-correct="true"><input type="checkbox" name="q41"> B) Desempenho</label>
+                <label><input type="checkbox" name="q41"> C) Gerenciamento de Usuários</label>
+                <label data-correct="true"><input type="checkbox" name="q41"> D) Tolerância a Falhas</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B e D</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Trusted Advisor analisa seu ambiente em cinco pilares: Otimização de Custos, Desempenho, Segurança, Tolerância a Falhas e Limites de Serviço.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">42. Qual tipo de oferta do Nível Gratuito da AWS não expira e está disponível para todos os clientes, não apenas para os novos?</p>
+            <div class="options">
+                <label><input type="radio" name="q42"> A) 12 Meses Gratuitos</label>
+                <label><input type="radio" name="q42"> B) Versão de Teste</label>
+                <label data-correct="true"><input type="radio" name="q42"> C) Sempre Gratuito</label>
+                <label><input type="radio" name="q42"> D) Nível Gratuito Corporativo</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Sempre Gratuito</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As ofertas "Sempre Gratuito" (Always Free) não têm data de validade e podem ser usadas por qualquer cliente AWS, desde que o uso permaneça dentro dos limites mensais especificados.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">43. Qual plano de suporte da AWS é mais indicado para uma empresa que executa cargas de trabalho de produção e precisa de tempos de resposta inferiores a 1 hora para casos críticos?</p>
+            <div class="options">
+                <label><input type="radio" name="q43"> A) Basic</label>
+                <label><input type="radio" name="q43"> B) Developer</label>
+                <label data-correct="true"><input type="radio" name="q43"> C) Business</label>
+                <label><input type="radio" name="q43"> D) Enterprise On-Ramp</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Business</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O plano de suporte Business oferece um tempo de resposta de até 1 hora para sistemas de produção inativos, sendo o plano mínimo recomendado para ambientes de produção.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">44. Uma empresa com dezenas de contas AWS quer receber uma única fatura mensal. Qual recurso permite isso?</p>
+            <div class="options">
+                <label><input type="radio" name="q44"> A) AWS Budgets</label>
+                <label><input type="radio" name="q44"> B) AWS Cost Explorer</label>
+                <label><input type="radio" name="q44"> C) Contas Vinculadas do IAM</label>
+                <label data-correct="true"><input type="radio" name="q44"> D) Cobrança Consolidada no AWS Organizations</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Cobrança Consolidada no AWS Organizations</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A Cobrança Consolidada é um recurso do AWS Organizations que permite combinar o faturamento de várias contas AWS em uma única fatura na conta principal.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">45. Qual ferramenta de gerenciamento de custos da AWS é usada principalmente para visualizar e analisar seus custos e uso ao longo do tempo?</p>
+            <div class="options">
+                <label><input type="radio" name="q45"> A) AWS Budgets</label>
+                <label><input type="radio" name="q45"> B) Calculadora de Preços da AWS</label>
+                <label data-correct="true"><input type="radio" name="q45"> C) AWS Cost Explorer</label>
+                <label><input type="radio" name="q45"> D) Painel de Faturamento</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) AWS Cost Explorer</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Cost Explorer é a ferramenta de análise visual que permite explorar seus dados de custo e uso com gráficos e relatórios detalhados para entender tendências e motivadores de custo.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">46. Uma equipe de projeto precisa garantir que seus gastos mensais com a AWS não ultrapassem $1.000. Qual serviço eles devem usar para serem notificados quando se aproximarem desse limite?</p>
+            <div class="options">
+                <label><input type="radio" name="q46"> A) Amazon CloudWatch</label>
+                <label><input type="radio" name="q46"> B) AWS Cost Explorer</label>
+                <label data-correct="true"><input type="radio" name="q46"> C) AWS Budgets</label>
+                <label><input type="radio" name="q46"> D) AWS Trusted Advisor</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) AWS Budgets</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Budgets é projetado especificamente para essa finalidade: definir orçamentos de custo ou uso e criar alertas para notificar proativamente quando os limites são atingidos.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">47. Qual plano de suporte da AWS oferece acesso a um Gerente Técnico de Contas (TAM) dedicado?</p>
+            <div class="options">
+                <label><input type="radio" name="q47"> A) Developer</label>
+                <label><input type="radio" name="q47"> B) Business</label>
+                <label><input type="radio" name="q47"> C) Enterprise On-Ramp</label>
+                <label data-correct="true"><input type="radio" name="q47"> D) Enterprise de Grande Porte (Enterprise)</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Enterprise de Grande Porte (Enterprise)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Enquanto o Enterprise On-Ramp oferece acesso a um grupo de TAMs, o plano Enterprise de Grande Porte é o que fornece um TAM dedicado como ponto de contato principal e consultor proativo.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">48. O que é o AWS Marketplace?</p>
+            <div class="options">
+                <label><input type="radio" name="q48"> A) Um serviço para monitorar os custos de software de terceiros.</label>
+                <label data-correct="true"><input type="radio" name="q48"> B) Um catálogo digital para encontrar, comprar e implantar software de terceiros na AWS.</label>
+                <label><input type="radio" name="q48"> C) Um plano de suporte que inclui software de parceiros.</label>
+                <label><input type="radio" name="q48"> D) Uma ferramenta para migrar software on-premises para a AWS.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Um catálogo digital para encontrar, comprar e implantar software de terceiros na AWS.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Marketplace funciona como uma loja de aplicativos para a AWS, onde você pode encontrar milhares de ofertas de software de fornecedores independentes que podem ser executadas na nuvem.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">49. Qual perspectiva do AWS Cloud Adoption Framework (CAF) é responsável por definir a arquitetura técnica da nuvem?</p>
+            <div class="options">
+                <label><input type="radio" name="q49"> A) Governança</label>
+                <label><input type="radio" name="q49"> B) Negócio</label>
+                <label data-correct="true"><input type="radio" name="q49"> C) Plataforma</label>
+                <label><input type="radio" name="q49"> D) Pessoas</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Plataforma</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva de Plataforma inclui os princípios e padrões para a implementação de novas soluções na nuvem e a migração de workloads, o que abrange a definição da arquitetura.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">50. Mover um banco de dados de uma máquina virtual on-premises para o Amazon RDS é um exemplo de qual estratégia de migração?</p>
+            <div class="options">
+                <label><input type="radio" name="q50"> A) Rehost</label>
+                <label><input type="radio" name="q50"> B) Refactor</label>
+                <label data-correct="true"><input type="radio" name="q50"> C) Replatform</label>
+                <label><input type="radio" name="q50"> D) Retire</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Replatform</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Esta ação é um "Replatform" (ou "lift, tinker, and shift") porque envolve uma pequena otimização (mover para um serviço gerenciado como o RDS) sem alterar a arquitetura central da aplicação.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">51. A capacidade de uma aplicação se recuperar de falhas e operar de forma consistente, executando suas funções como esperado, é o foco de qual pilar do AWS Well-Architected Framework?</p>
+            <div class="options">
+                <label><input type="radio" name="q51"> A) Excelência Operacional</label>
+                <label><input type="radio" name="q51"> B) Segurança</label>
+                <label data-correct="true"><input type="radio" name="q51"> C) Confiabilidade</label>
+                <label><input type="radio" name="q51"> D) Eficiência de Desempenho</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Confiabilidade</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O pilar de Confiabilidade abrange a capacidade de um sistema se recuperar de falhas, adquirir recursos dinamicamente e mitigar interrupções, garantindo que ele opere de forma consistente e correta.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">52. Qual benefício da nuvem AWS se refere diretamente à vantagem de preço obtida pelo poder de compra agregado da AWS?</p>
+            <div class="options">
+                <label><input type="radio" name="q52"> A) Agilidade</label>
+                <label><input type="radio" name="q52"> B) Elasticidade</label>
+                <label data-correct="true"><input type="radio" name="q52"> C) Economias de escala massivas</label>
+                <label><input type="radio" name="q52"> D) Alcance Global</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Economias de escala massivas</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Como a AWS atende centenas de milhares de clientes, ela alcança economias de escala (comprando hardware e energia mais baratos) que são repassadas aos clientes na forma de preços mais baixos.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">53. Qual pilar do AWS Well-Architected Framework inclui a capacidade de executar cargas de trabalho de maneira eficaz e obter informações sobre as operações?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q53"> A) Excelência Operacional</label>
+                <label><input type="radio" name="q53"> B) Confiabilidade</label>
+                <label><input type="radio" name="q53"> C) Otimização de Custos</label>
+                <label><input type="radio" name="q53"> D) Sustentabilidade</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Excelência Operacional</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O pilar de Excelência Operacional foca em executar e monitorar sistemas para entregar valor de negócio e melhorar continuamente os processos, o que inclui obter insights sobre as operações.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">54. Quais dos seguintes são benefícios da computação em nuvem AWS? (Selecione DUAS)</p>
+            <div class="options">
+                <label data-correct="true"><input type="checkbox" name="q54"> A) Aumentar a velocidade e a agilidade.</label>
+                <label><input type="checkbox" name="q54"> B) Exigir grandes despesas de capital iniciais.</label>
+                <label data-correct="true"><input type="checkbox" name="q54"> C) Parar de gastar dinheiro com execução e manutenção de data centers.</label>
+                <label><input type="checkbox" name="q54"> D) Ter controle direto sobre o hardware físico dos servidores.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A e C</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Aumentar a velocidade e a agilidade (provisionando recursos em minutos) e parar de gastar dinheiro com data centers (focando no negócio) são dois dos seis principais benefícios da nuvem AWS.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">55. Qual serviço da AWS é um orquestrador de fluxo de trabalho visual que coordena múltiplos serviços, como funções AWS Lambda?</p>
+            <div class="options">
+                <label><input type="radio" name="q55"> A) Amazon SQS</label>
+                <label><input type="radio" name="q55"> B) Amazon SNS</label>
+                <label><input type="radio" name="q55"> C) Amazon API Gateway</label>
+                <label data-correct="true"><input type="radio" name="q55"> D) AWS Step Functions</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) AWS Step Functions</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Step Functions permite coordenar múltiplos serviços AWS em fluxos de trabalho visuais e sem servidor, facilitando a criação de aplicações distribuídas complexas.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">56. Uma empresa precisa migrar 80 TB de dados para a AWS. A conexão com a internet é lenta e o tempo é um fator crítico. Qual membro da AWS Snow Family seria a escolha mais apropriada?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q56"> A) AWS Snowball Edge Storage Optimized</label>
+                <label><input type="radio" name="q56"> B) AWS Snowcone</label>
+                <label><input type="radio" name="q56"> C) AWS Snowmobile</label>
+                <label><input type="radio" name="q56"> D) AWS DataSync</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) AWS Snowball Edge Storage Optimized</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Snowball Edge Storage Optimized, com seus 80 TB de capacidade, é ideal para migrações de dados em larga escala. O Snowcone seria pequeno demais (até 14 TB) e o Snowmobile seria excessivo (até 100 PB).</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">57. A capacidade de uma aplicação escalar horizontalmente para atender a picos de demanda é um princípio de design de qual pilar do Well-Architected Framework?</p>
+            <div class="options">
+                <label><input type="radio" name="q57"> A) Segurança</label>
+                <label><input type="radio" name="q57"> B) Excelência Operacional</label>
+                <label data-correct="true"><input type="radio" name="q57"> C) Confiabilidade</label>
+                <label><input type="radio" name="q57"> D) Otimização de Custos</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Confiabilidade</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Escalar horizontalmente (adicionar mais instâncias) é uma técnica fundamental para aumentar a disponibilidade agregada do sistema e garantir que ele possa lidar com a demanda, o que é um aspecto central da Confiabilidade.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">58. Qual serviço da AWS permite que você use o aprendizado por reforço de forma prática e divertida, treinando um carro de corrida em escala 1/18?</p>
+            <div class="options">
+                <label><input type="radio" name="q58"> A) Amazon SageMaker</label>
+                <label><input type="radio" name="q58"> B) Amazon Lex</label>
+                <label><input type="radio" name="q58"> C) AWS RoboMaker</label>
+                <label data-correct="true"><input type="radio" name="q58"> D) AWS DeepRacer</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) AWS DeepRacer</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS DeepRacer é uma ferramenta educacional e prática projetada para que desenvolvedores experimentem e aprendam sobre aprendizado por reforço (RL) em um ambiente de corrida divertido.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">59. Qual perspectiva do AWS Cloud Adoption Framework (CAF) é mais relevante para o Chief Information Security Officer (CISO) de uma empresa?</p>
+            <div class="options">
+                <label><input type="radio" name="q59"> A) Pessoas</label>
+                <label><input type="radio" name="q59"> B) Plataforma</label>
+                <label data-correct="true"><input type="radio" name="q59"> C) Segurança</label>
+                <label><input type="radio" name="q59"> D) Negócio</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Segurança</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva de Segurança do CAF é diretamente voltada para os objetivos de segurança da organização e os perfis comuns associados a ela são o CISO, gerentes de segurança e analistas de segurança.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">60. Quais são as DUAS estratégias de migração dos "6 Rs" que resultam em workloads rodando na AWS?</p>
+            <div class="options">
+                <label data-correct="true"><input type="checkbox" name="q60"> A) Redefinir Plataforma (Replatform)</label>
+                <label><input type="checkbox" name="q60"> B) Reter (Retain)</label>
+                <label data-correct="true"><input type="checkbox" name="q60"> C) Refatorar (Refactor)</label>
+                <label><input type="checkbox" name="q60"> D) Retirar (Retire)</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A e C</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Das seis estratégias, quatro resultam em aplicações rodando na AWS: Rehost, Replatform, Repurchase e Refactor. Reter e Retirar mantêm a aplicação fora da nuvem ou a desativam.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">61. Uma empresa quer analisar e atribuir seus custos da AWS com base em projetos ou centros de custo específicos. Qual é a melhor maneira de categorizar os recursos para essa finalidade?</p>
+            <div class="options">
+                <label><input type="radio" name="q61"> A) Usando nomes de recursos padronizados.</label>
+                <label><input type="radio" name="q61"> B) Separando cada projeto em uma Região AWS diferente.</label>
+                <label><input type="radio" name="q61"> C) Criando um bucket S3 para cada projeto.</label>
+                <label data-correct="true"><input type="radio" name="q61"> D) Aplicando tags de alocação de custos aos recursos.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Aplicando tags de alocação de custos aos recursos.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Tags são metadados (chave-valor) que você pode atribuir aos recursos da AWS. Ao ativar as tags de alocação de custos, você pode usá-las para organizar seus custos e rastreá-los em ferramentas como o AWS Cost Explorer.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">62. Qual serviço da AWS é um companheiro de codificação com IA que gera sugestões de código em tempo real?</p>
+            <div class="options">
+                <label><input type="radio" name="q62"> A) Amazon SageMaker</label>
+                <label><input type="radio" name="q62"> B) Amazon Lex</label>
+                <label data-correct="true"><input type="radio" name="q62"> C) Amazon CodeWhisperer</label>
+                <label><input type="radio" name="q62"> D) AWS Cloud9</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Amazon CodeWhisperer</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O CodeWhisperer é a ferramenta de IA da AWS que se integra a IDEs para fornecer sugestões de código, desde trechos até funções completas, acelerando o desenvolvimento.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">63. Qual pilar do AWS Well-Architected Framework está mais relacionado à implementação de uma base de identidade forte e à proteção de dados em trânsito e em repouso?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q63"> A) Segurança</label>
+                <label><input type="radio" name="q63"> B) Confiabilidade</label>
+                <label><input type="radio" name="q63"> C) Excelência Operacional</label>
+                <label><input type="radio" name="q63"> D) Sustentabilidade</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Segurança</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Estes são princípios de design centrais do pilar de Segurança, que foca em proteger informações, sistemas e ativos.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">64. Para uma aplicação sem servidor (serverless), qual serviço da AWS é normalmente usado para executar o código da lógica de negócio?</p>
+            <div class="options">
+                <label><input type="radio" name="q64"> A) Amazon EC2</label>
+                <label><input type="radio" name="q64"> B) Amazon S3</label>
+                <label><input type="radio" name="q64"> C) Amazon ECS com EC2</label>
+                <label data-correct="true"><input type="radio" name="q64"> D) AWS Lambda</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) AWS Lambda</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Lambda é o serviço de computação central em arquiteturas serverless, permitindo que os desenvolvedores executem seu código em resposta a eventos sem gerenciar servidores.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">65. Uma empresa precisa de suporte para software de terceiros comum (como sistemas operacionais) rodando em suas instâncias EC2. Qual é o plano de suporte mínimo que oferece esse benefício?</p>
+            <div class="options">
+                <label><input type="radio" name="q65"> A) Developer</label>
+                <label data-correct="true"><input type="radio" name="q65"> B) Business</label>
+                <label><input type="radio" name="q65"> C) Enterprise On-Ramp</label>
+                <label><input type="radio" name="q65"> D) Basic</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Business</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O plano de suporte Business é o primeiro nível que inclui suporte limitado para software comum de terceiros, como sistemas operacionais e componentes de pilha de aplicações.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">66. Qual dos seis benefícios da computação em nuvem permite que uma empresa lance sua aplicação em várias partes do mundo em questão de minutos?</p>
+            <div class="options">
+                <label><input type="radio" name="q66"> A) Aumentar a velocidade e a agilidade</label>
+                <label><input type="radio" name="q66"> B) Elasticidade</label>
+                <label><input type="radio" name="q66"> C) Economias de escala</label>
+                <label data-correct="true"><input type="radio" name="q66"> D) Ter alcance global em minutos</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Ter alcance global em minutos</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A infraestrutura global da AWS permite que você implante seus recursos e aplicações em diferentes Regiões geográficas rapidamente, alcançando um público global com baixa latência.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">67. Qual ferramenta da AWS fornece um relatório com riscos potenciais altos e médios em sua arquitetura após responder a uma série de perguntas?</p>
+            <div class="options">
+                <label><input type="radio" name="q67"> A) AWS Trusted Advisor</label>
+                <label data-correct="true"><input type="radio" name="q67"> B) AWS Well-Architected Tool</label>
+                <label><input type="radio" name="q67"> C) Amazon Inspector</label>
+                <label><input type="radio" name="q67"> D) AWS Config</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) AWS Well-Architected Tool</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A AWS Well-Architected Tool é projetada para guiar você através de uma revisão baseada em perguntas e, ao final, gera um relatório detalhado com os riscos identificados e um plano de melhorias.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">68. A perspectiva de "Governança" do AWS CAF se concentra em qual dos seguintes pontos?</p>
+            <div class="options">
+                <label><input type="radio" name="q68"> A) Definir a arquitetura técnica da nuvem.</label>
+                <label><input type="radio" name="q68"> B) Treinar e capacitar a equipe.</label>
+                <label data-correct="true"><input type="radio" name="q68"> C) Alinhar a estratégia de TI com a de negócios, gerenciando riscos e medindo o valor.</label>
+                <label><input type="radio" name="q68"> D) Implementar controles de segurança e auditoria.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Alinhar a estratégia de TI com a de negócios, gerenciando riscos e medindo o valor.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A Governança no CAF foca em garantir que os investimentos na nuvem maximizem o valor comercial e minimizem os riscos, alinhando as estratégias de TI e de negócios.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">69. Qual serviço de inovação da AWS é o cerne da Amazon Alexa e permite criar bots de conversa interativos?</p>
+            <div class="options">
+                <label><input type="radio" name="q69"> A) Amazon Transcribe</label>
+                <label data-correct="true"><input type="radio" name="q69"> B) Amazon Lex</label>
+                <label><input type="radio" name="q69"> C) Amazon Polly</label>
+                <label><input type="radio" name="q69"> D) Amazon Comprehend</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Amazon Lex</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Lex é um serviço de IA para construir interfaces de conversação (voz e texto) em qualquer aplicação, usando a mesma tecnologia de deep learning da Alexa.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">70. Qual das seguintes opções descreve melhor a estratégia de migração "Retirar" (Retire)?</p>
+            <div class="options">
+                <label><input type="radio" name="q70"> A) Manter a aplicação on-premises e revisitar a migração mais tarde.</label>
+                <label data-correct="true"><input type="radio" name="q70"> B) Descomissionar e desligar aplicações que não são mais necessárias.</label>
+                <label><input type="radio" name="q70"> C) Mover a aplicação para a AWS com otimizações na plataforma.</label>
+                <label><input type="radio" name="q70"> D) Reescrever a aplicação usando arquitetura nativa da nuvem.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Descomissionar e desligar aplicações que não são mais necessárias.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A estratégia de Retirar consiste em identificar e remover ativamente do portfólio de TI as aplicações que se tornaram obsoletas ou não têm mais valor de negócio.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">71. Que benefício da nuvem é demonstrado quando uma empresa pode provisionar dezenas de servidores para um teste de carga em minutos, e depois desligá-los, pagando apenas pelo tempo de uso?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q71"> A) Aumentar a velocidade e a agilidade</label>
+                <label><input type="radio" name="q71"> B) Economias de escala</label>
+                <label><input type="radio" name="q71"> C) Alcance global</label>
+                <label><input type="radio" name="q71"> D) Tolerância a falhas</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Aumentar a velocidade e a agilidade</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A capacidade de obter recursos de TI quase instantaneamente, experimentar sem grandes custos fixos e reduzir os ciclos de desenvolvimento é a essência do benefício de velocidade e agilidade da nuvem.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">72. Qual membro da AWS Snow Family é o mais adequado para transferir cerca de 10 TB de dados de um local com conectividade de internet limitada?</p>
+            <div class="options">
+                <label><input type="radio" name="q72"> A) AWS Snowmobile</label>
+                <label><input type="radio" name="q72"> B) AWS Snowball Edge Compute Optimized</label>
+                <label data-correct="true"><input type="radio" name="q72"> C) AWS Snowcone</label>
+                <label><input type="radio" name="q72"> D) AWS Snowball original</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) AWS Snowcone</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Com até 14 TB de capacidade, o Snowcone é o dispositivo ideal para transferências de dados de pequeno a médio porte, sendo mais portátil e econômico que o Snowball para essa quantidade de dados.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">73. Qual pilar do Well-Architected Framework garante que uma aplicação seja projetada para usar o tipo e o tamanho corretos de recursos, evitando superprovisionamento?</p>
+            <div class="options">
+                <label><input type="radio" name="q73"> A) Confiabilidade</label>
+                <label><input type="radio" name="q73"> B) Segurança</label>
+                <label><input type="radio" name="q73"> C) Excelência Operacional</label>
+                <label data-correct="true"><input type="radio" name="q73"> D) Eficiência de Desempenho</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Eficiência de Desempenho</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A Eficiência de Desempenho foca em usar os recursos de computação com eficiência para atender aos requisitos. Selecionar o tipo de recurso correto é um de seus princípios de design chave para evitar desperdício.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">74. A análise do CAF revela que a equipe de TI de uma empresa não tem experiência com automação e práticas de DevOps. Qual perspectiva do framework abordará essa lacuna?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q74"> A) Pessoas</label>
+                <label><input type="radio" name="q74"> B) Negócio</label>
+                <label><input type="radio" name="q74"> C) Governança</label>
+                <label><input type="radio" name="q74"> D) Plataforma</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Pessoas</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva de Pessoas é responsável por avaliar as estruturas organizacionais, novos requisitos de habilidades e processos, e identificar lacunas de conhecimento para priorizar o treinamento e a capacitação da equipe.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">75. Uma empresa de streaming de mídia decide redesenhar sua aplicação de processamento de vídeo para usar AWS Lambda para transcodificação e AWS Step Functions para orquestrar o fluxo. Qual estratégia de migração está sendo aplicada?</p>
+            <div class="options">
+                <label><input type="radio" name="q75"> A) Rehost</label>
+                <label><input type="radio" name="q75"> B) Replatform</label>
+                <label data-correct="true"><input type="radio" name="q75"> C) Refactor / Re-architect</label>
+                <label><input type="radio" name="q75"> D) Repurchase</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Refactor / Re-architect</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A refatoração (ou re-arquitetura) envolve reimaginar como uma aplicação é arquitetada e desenvolvida, neste caso, mudando de uma arquitetura tradicional para uma serverless nativa da nuvem para obter benefícios de escala e custo.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">76. Uma empresa está executando uma aplicação em instâncias EC2 dentro de uma sub-rede privada. Por razões de segurança, as instâncias não podem ter endereços IP públicos. Como essas instâncias podem acessar a internet para baixar atualizações de software?</p>
+            <div class="options">
+                <label><input type="radio" name="q76"> A) Anexando um Internet Gateway diretamente à sub-rede privada.</label>
+                <label data-correct="true"><input type="radio" name="q76"> B) Roteando o tráfego de saída da sub-rede privada através de um NAT Gateway localizado em uma sub-rede pública.</label>
+                <label><input type="radio" name="q76"> C) Configurando uma conexão VPC Peering com uma VPC que tenha acesso à internet.</label>
+                <label><input type="radio" name="q76"> D) Adicionando uma regra "Allow All" de saída no Security Group das instâncias.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Roteando o tráfego de saída da sub-rede privada através de um NAT Gateway localizado em uma sub-rede pública.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Um NAT Gateway permite que instâncias em uma sub-rede privada iniciem conexões de saída para a internet (para atualizações, por exemplo), mas impede que a internet inicie conexões de entrada com essas instâncias, mantendo-as seguras.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">77. Um arquiteto precisa escolher um serviço de banco de dados para uma nova aplicação de e-commerce. A aplicação usará um schema relacional complexo e espera-se um crescimento muito rápido, exigindo a maior performance de leitura possível. Qual serviço é a escolha MAIS apropriada?</p>
+            <div class="options">
+                <label><input type="radio" name="q77"> A) Amazon DynamoDB</label>
+                <label data-correct="true"><input type="radio" name="q77"> B) Amazon Aurora com múltiplas réplicas de leitura (Read Replicas)</label>
+                <label><input type="radio" name="q77"> C) Amazon RDS for MySQL em uma única instância grande.</label>
+                <label><input type="radio" name="q77"> D) Amazon Redshift</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Amazon Aurora com múltiplas réplicas de leitura (Read Replicas)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Aurora é projetado para alta performance e escalabilidade. Adicionar réplicas de leitura (até 15) permite escalar horizontalmente a capacidade de leitura para atender a altas demandas, o que é ideal para um e-commerce em crescimento. DynamoDB é NoSQL e Redshift é para data warehousing.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">78. Uma empresa está preocupada com a exposição acidental de dados sensíveis em seus buckets S3. Qual serviço da AWS pode monitorar continuamente os buckets para detectar e alertar sobre dados como chaves de acesso ou informações de cartão de crédito?</p>
+            <div class="options">
+                <label><input type="radio" name="q78"> A) Amazon Inspector</label>
+                <label><input type="radio" name="q78"> B) AWS Shield</label>
+                <label data-correct="true"><input type="radio" name="q78"> C) Amazon Macie</label>
+                <label><input type="radio" name="q78"> D) AWS Config</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Amazon Macie</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Macie é um serviço de segurança de dados que usa machine learning e correspondência de padrões para descobrir, classificar e proteger dados sensíveis no Amazon S3.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">79. Qual é a principal diferença de caso de uso entre Amazon SQS e Amazon SNS?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q79"> A) SQS é uma fila para desacoplar componentes (um para um), enquanto SNS é um sistema de publicação/assinatura para distribuir mensagens (um para muitos).</label>
+                <label><input type="radio" name="q79"> B) SQS envia notificações por e-mail, enquanto SNS armazena mensagens para processamento posterior.</label>
+                <label><input type="radio" name="q79"> C) SQS é usado para orquestrar fluxos de trabalho, enquanto SNS é para chamadas de API.</label>
+                <label><input type="radio" name="q79"> D) SQS é para streaming de dados em tempo real, enquanto SNS é para arquivamento de logs.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) SQS é uma fila para desacoplar componentes (um para um), enquanto SNS é um sistema de publicação/assinatura para distribuir mensagens (um para muitos).</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Esta é a distinção fundamental. O SQS (Simple Queue Service) desacopla um produtor de um consumidor. O SNS (Simple Notification Service) distribui uma mensagem de um publicador para múltiplos assinantes.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">80. Uma empresa quer aplicar uma política que negue a permissão de deletar volumes EBS para todas as identidades em todas as suas contas, exceto para o usuário raiz. Como essa política deve ser implementada de forma mais eficaz?</p>
+            <div class="options">
+                <label><input type="radio" name="q80"> A) Em uma política IAM anexada a cada usuário individualmente.</label>
+                <label data-correct="true"><input type="radio" name="q80"> B) Em uma Service Control Policy (SCP) no AWS Organizations.</label>
+                <label><input type="radio" name="q80"> C) Em um Security Group aplicado a todas as instâncias EC2.</label>
+                <label><input type="radio" name="q80"> D) Em uma Network ACL aplicada a todas as sub-redes.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Em uma Service Control Policy (SCP) no AWS Organizations.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Uma SCP é a melhor forma de aplicar um "guardrail" de permissões em toda a organização. Ela pode negar uma ação para todas as contas e perfis IAM dentro do escopo. As SCPs não afetam o usuário raiz da conta de gerenciamento.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">81. Qual dos seguintes serviços é um exemplo de Plataforma como Serviço (PaaS)?</p>
+            <div class="options">
+                <label><input type="radio" name="q81"> A) Amazon EC2</label>
+                <label data-correct="true"><input type="radio" name="q81"> B) AWS Elastic Beanstalk</label>
+                <label><input type="radio" name="q81"> C) Amazon S3</label>
+                <label><input type="radio" name="q81"> D) Amazon VPC</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) AWS Elastic Beanstalk</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Um serviço PaaS abstrai a infraestrutura subjacente. O Elastic Beanstalk permite que você apenas implante seu código, e ele lida com o provisionamento de load balancers, instâncias EC2, etc. EC2 é IaaS (Infraestrutura como Serviço).</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">82. Para qual finalidade um arquiteto usaria o AWS Global Accelerator?</p>
+            <div class="options">
+                <label><input type="radio" name="q82"> A) Para armazenar em cache conteúdo estático perto dos usuários finais.</label>
+                <label data-correct="true"><input type="radio" name="q82"> B) Para melhorar a disponibilidade e o desempenho de aplicações globais usando a rede da AWS.</label>
+                <label><input type="radio" name="q82"> C) Para criar uma conexão de rede privada do on-premises para a AWS.</label>
+                <label><input type="radio" name="q82"> D) Para distribuir tráfego HTTP/HTTPS com base no caminho da URL.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Para melhorar a disponibilidade e o desempenho de aplicações globais usando a rede da AWS.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Global Accelerator otimiza o caminho da rede desde o usuário até sua aplicação, usando a rede global da AWS para diminuir a latência e o jitter, e fornece IPs estáticos que simplificam o failover entre regiões.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">83. Uma empresa precisa de uma solução de armazenamento que se pareça com um disco de rede local (um "drive" compartilhado) e que possa ser acessado por dezenas de servidores Linux on-premises e instâncias EC2 simultaneamente. Qual serviço é a melhor escolha?</p>
+            <div class="options">
+                <label><input type="radio" name="q83"> A) Amazon S3</label>
+                <label><input type="radio" name="q83"> B) Amazon EBS Multi-Attach</label>
+                <label data-correct="true"><input type="radio" name="q83"> C) Amazon FSx for Windows File Server</label>
+                <label data-correct="true"><input type="radio" name="q83"> D) Amazon EFS</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C e D</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Tanto o Amazon EFS (para workloads Linux) quanto o Amazon FSx (que tem uma opção para Windows File Server) fornecem sistemas de arquivos totalmente gerenciados que podem ser acessados simultaneamente por múltiplos servidores, seja na nuvem ou on-premises. O EBS Multi-Attach é limitado a um pequeno número de instâncias na mesma AZ.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">84. Qual é a maneira mais econômica de executar uma carga de trabalho consistente e previsível no Amazon EC2 por um período de um ano?</p>
+            <div class="options">
+                <label><input type="radio" name="q84"> A) Usar apenas Instâncias Sob Demanda.</label>
+                <label><input type="radio" name="q84"> B) Usar apenas Instâncias Spot.</label>
+                <label data-correct="true"><input type="radio" name="q84"> C) Comprar um Savings Plan ou uma Instância Reservada.</label>
+                <label><input type="radio" name="q84"> D) Usar um Host Dedicado.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Comprar um Savings Plan ou uma Instância Reservada.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Para cargas de trabalho consistentes, comprometer-se com um nível de uso através de um Savings Plan ou uma Instância Reservada oferece descontos significativos em comparação com o preço Sob Demanda. As instâncias Spot não são adequadas para cargas de trabalho que não podem ser interrompidas.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">85. Uma aplicação web usa um Application Load Balancer para distribuir tráfego para um grupo de instâncias EC2. O que acontecerá se uma instância nesse grupo falhar em sua verificação de saúde?</p>
+            <div class="options">
+                <label><input type="radio" name="q85"> A) O Load Balancer terminará a instância e lançará uma nova.</label>
+                <label data-correct="true"><input type="radio" name="q85"> B) O Load Balancer parará de enviar tráfego para a instância que falhou.</label>
+                <label><input type="radio" name="q85"> C) O Load Balancer enviará uma notificação SNS para o administrador.</label>
+                <label><input type="radio" name="q85"> D) A aplicação inteira ficará indisponível.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) O Load Balancer parará de enviar tráfego para a instância que falhou.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Elastic Load Balancing realiza verificações de saúde (health checks) nos seus alvos. Se um alvo falhar, o ELB o marca como "unhealthy" e para de rotear tráfego para ele, redirecionando para as instâncias saudáveis restantes.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">86. Qual pilar do Trusted Advisor analisaria seu uso de Instâncias Reservadas e Savings Plans para garantir que você está maximizando suas economias?</p>
+            <div class="options">
+                <label><input type="radio" name="q86"> A) Performance</label>
+                <label data-correct="true"><input type="radio" name="q86"> B) Otimização de Custos</label>
+                <label><input type="radio" name="q86"> C) Limites de Serviço</label>
+                <label><input type="radio" name="q86"> D) Tolerância a Falhas</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Otimização de Custos</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O pilar de Otimização de Custos do Trusted Advisor inclui verificações específicas para analisar a utilização de seus compromissos de preço, como Instâncias Reservadas e Savings Plans, e recomendar otimizações.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">87. Um administrador quer saber exatamente qual usuário IAM acessou um determinado objeto S3 ontem. O Amazon S3 e o AWS CloudTrail estão configurados para logar essas atividades. Onde ele encontraria essa informação?</p>
+            <div class="options">
+                <label><input type="radio" name="q87"> A) Nos logs de acesso do servidor S3.</label>
+                <label data-correct="true"><input type="radio" name="q87"> B) Nos logs de eventos de dados do AWS CloudTrail.</label>
+                <label><input type="radio" name="q87"> C) Nas métricas do Amazon CloudWatch para o bucket.</label>
+                <label><input type="radio" name="q87"> D) Nas descobertas do Amazon GuardDuty.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Nos logs de eventos de dados do AWS CloudTrail.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O CloudTrail pode ser configurado para registrar "Eventos de Dados", que capturam a atividade no nível do objeto para recursos como buckets S3. Isso fornece uma trilha de auditoria detalhada de quem acessou o quê.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">88. Qual é a principal vantagem de usar o Amazon RDS em vez de instalar um banco de dados em uma instância EC2?</p>
+            <div class="options">
+                <label><input type="radio" name="q88"> A) Custo de computação mais baixo.</label>
+                <label><input type="radio" name="q88"> B) Acesso total ao sistema operacional subjacente.</label>
+                <label data-correct="true"><input type="radio" name="q88"> C) A AWS gerencia tarefas administrativas como aplicação de patches, backups e failover.</label>
+                <label><input type="radio" name="q88"> D) Suporte para bancos de dados NoSQL.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) A AWS gerencia tarefas administrativas como aplicação de patches, backups e failover.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O principal valor do RDS é ser um serviço gerenciado. Ele automatiza tarefas administrativas demoradas, permitindo que as equipes se concentrem em suas aplicações em vez de na administração do banco de dados.</div>
+            </div>
+        </div>
+        <div class="question-container">
+            <p class="question-text">89. Um novo funcionário precisa de acesso para visualizar métricas no CloudWatch e ler objetos de um bucket S3 específico. Qual é a abordagem mais segura e alinhada com as melhores práticas do IAM?</p>
+            <div class="options">
+                <label><input type="radio" name="q89"> A) Adicionar o novo funcionário ao grupo de administradores para garantir que ele tenha acesso.</label>
+                <label data-correct="true"><input type="radio" name="q89"> B) Criar um novo grupo IAM com políticas que concedem apenas as permissões necessárias (read-only para CloudWatch e S3) e adicionar o usuário a esse grupo.</label>
+                <label><input type="radio" name="q89"> C) Compartilhar as credenciais de um usuário existente que já tenha o acesso necessário.</label>
+                <label><input type="radio" name="q89"> D) Criar um Perfil IAM (Role) e instruir o funcionário a assumi-lo a cada login.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Criar um novo grupo IAM com políticas que concedem apenas as permissões necessárias (read-only para CloudWatch e S3) e adicionar o usuário a esse grupo.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Esta abordagem segue o princípio do menor privilégio e facilita o gerenciamento. Em vez de atribuir políticas diretamente ao usuário, você atribui ao grupo. Isso torna mais fácil gerenciar permissões para múltiplos funcionários com a mesma função.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">90. Uma empresa quer os benefícios de um banco de dados relacional gerenciado, mas está preocupada com os custos, pois sua carga de trabalho tem picos imprevisíveis e longos períodos de inatividade. Qual solução de banco de dados é a MAIS eficiente em termos de custo para este cenário?</p>
+            <div class="options">
+                <label><input type="radio" name="q90"> A) Amazon RDS Provisionado com uma instância grande.</label>
+                <label><input type="radio" name="q90"> B) Instalar um banco de dados MySQL em uma instância EC2 com Auto Scaling.</label>
+                <label><input type="radio" name="q90"> C) Amazon Redshift</label>
+                <label data-correct="true"><input type="radio" name="q90"> D) Amazon Aurora Serverless</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Amazon Aurora Serverless</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Aurora Serverless é projetado para cargas de trabalho variáveis e imprevisíveis. Ele escala automaticamente a capacidade do banco de dados para cima ou para baixo com base na demanda e pode até mesmo pausar completamente durante períodos de inatividade, fazendo com que você pague apenas pelos recursos que consome.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">91. Uma empresa precisa estabelecer uma conexão privada e altamente disponível entre seu data center on-premises e sua VPC. Qual é a melhor abordagem para atingir alta disponibilidade?</p>
+            <div class="options">
+                <label><input type="radio" name="q91"> A) Configurar uma única conexão AWS VPN.</label>
+                <label><input type="radio" name="q91"> B) Usar o AWS Snowball Edge para transferir dados continuamente.</label>
+                <label data-correct="true"><input type="radio" name="q91"> C) Configurar duas conexões AWS Direct Connect em locais diferentes.</label>
+                <label><input type="radio" name="q91"> D) Criar um VPC Peering entre a VPC e a rede on-premises.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Configurar duas conexões AWS Direct Connect em locais diferentes.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Para alta disponibilidade, a prática recomendada é provisionar conexões Direct Connect redundantes que terminem em diferentes locais de borda da AWS. Se uma conexão falhar, o tráfego pode ser roteado através da outra.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">92. Durante uma migração, uma empresa primeiro moveu sua aplicação e seu banco de dados para uma instância EC2 ("lift-and-shift"). Na fase seguinte, eles migraram o banco de dados da instância EC2 para o Amazon RDS. Quais DUAS estratégias de migração (6 Rs) foram usadas em sequência?</p>
+            <div class="options">
+                <label data-correct="true"><input type="checkbox" name="q92"> A) Rehost (Redefinir Hospedagem)</label>
+                <label><input type="checkbox" name="q92"> B) Refactor (Refatorar)</label>
+                <label data-correct="true"><input type="checkbox" name="q92"> C) Replatform (Redefinir Plataforma)</label>
+                <label><input type="checkbox" name="q92"> D) Repurchase (Recomprar)</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A e C</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A primeira fase foi um "Rehost" clássico, movendo a aplicação como estava para o EC2. A segunda fase foi um "Replatform", pois eles otimizaram uma parte da aplicação (o banco de dados) movendo-a para um serviço gerenciado (RDS) sem alterar a arquitetura principal.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">93. Uma aplicação está lenta e usuários relatam alta latência. Para diagnosticar o problema, um engenheiro precisa verificar métricas de desempenho como a utilização da CPU das instâncias EC2 e as operações de leitura/escrita do banco de dados RDS. Qual serviço ele deve usar primeiro?</p>
+            <div class="options">
+                <label><input type="radio" name="q93"> A) AWS CloudTrail</label>
+                <label><input type="radio" name="q93"> B) AWS Config</label>
+                <label data-correct="true"><input type="radio" name="q93"> C) Amazon CloudWatch Metrics</label>
+                <label><input type="radio" name="q93"> D) AWS Trusted Advisor</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Amazon CloudWatch Metrics</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon CloudWatch é o serviço de monitoramento que coleta e exibe métricas de desempenho de recursos da AWS. É o local principal para investigar problemas de performance como alta utilização de CPU ou I/O de banco de dados.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">94. Qual serviço da AWS pode ajudar uma empresa a gerenciar sua parte no Modelo de Responsabilidade Compartilhada, fornecendo uma visão centralizada dos alertas de segurança e verificando continuamente a conformidade com as melhores práticas?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q94"> A) AWS Security Hub</label>
+                <label><input type="radio" name="q94"> B) AWS Artifact</label>
+                <label><input type="radio" name="q94"> C) Amazon GuardDuty</label>
+                <label><input type="radio" name="q94"> D) AWS Shield</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) AWS Security Hub</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Security Hub agrega, organiza e prioriza alertas ou descobertas de segurança de múltiplos serviços AWS (como GuardDuty, Inspector, Macie), além de executar verificações de conformidade contínuas, dando uma visão centralizada da postura de segurança.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">95. Uma empresa que usa o AWS Organizations comprou Savings Plans na conta de gerenciamento. Como ela pode garantir que os descontos desses planos sejam aplicados ao uso de instâncias EC2 em suas contas de membro?</p>
+            <div class="options">
+                <label><input type="radio" name="q95"> A) É necessário comprar Savings Plans separados para cada conta.</label>
+                <label><input type="radio" name="q95"> B) Através da criação de uma política IAM que compartilha os planos.</label>
+                <label data-correct="true"><input type="radio" name="q95"> C) Habilitando o compartilhamento de descontos nas configurações de Cobrança Consolidada.</label>
+                <label><input type="radio" name="q95"> D) Os Savings Plans não podem ser compartilhados entre contas.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Habilitando o compartilhamento de descontos nas configurações de Cobrança Consolidada.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Um benefício chave da Cobrança Consolidada no AWS Organizations é a capacidade de compartilhar descontos de Instâncias Reservadas e Savings Plans entre todas as contas da organização, maximizando a economia.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">96. Um arquiteto quer construir uma API RESTful que autentica usuários e, em seguida, aciona uma função para processar dados. Quais DOIS serviços são essenciais para construir o endpoint da API e executar a lógica de backend sem gerenciar servidores?</p>
+            <div class="options">
+                <label data-correct="true"><input type="checkbox" name="q96"> A) Amazon API Gateway</label>
+                <label><input type="checkbox" name="q96"> B) Elastic Load Balancing</label>
+                <label><input type="checkbox" name="q96"> C) Amazon EC2</label>
+                <label data-correct="true"><input type="checkbox" name="q96"> D) AWS Lambda</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A e D</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Esta é uma arquitetura serverless padrão. O Amazon API Gateway cria e gerencia o endpoint da API, enquanto o AWS Lambda executa o código de backend em resposta às solicitações da API, sem a necessidade de servidores.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">97. Uma empresa armazena milhões de imagens no S3 Standard. Foi observado que 70% dessas imagens não são acessadas após 30 dias. Qual é a maneira MAIS eficiente em termos de custo para gerenciar este armazenamento sem intervenção manual?</p>
+            <div class="options">
+                <label><input type="radio" name="q97"> A) Escrever um script para mover manualmente os arquivos antigos para o S3 Glacier a cada mês.</label>
+                <label><input type="radio" name="q97"> B) Usar a classe de armazenamento S3 One Zone-IA para todos os novos objetos.</label>
+                <label data-correct="true"><input type="radio" name="q97"> C) Configurar uma Política de Ciclo de Vida (Lifecycle Policy) do S3 para mover objetos para S3 Standard-IA após 30 dias.</label>
+                <label><input type="radio" name="q97"> D) Excluir todos os objetos com mais de 30 dias.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Configurar uma Política de Ciclo de Vida (Lifecycle Policy) do S3 para mover objetos para S3 Standard-IA após 30 dias.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As Políticas de Ciclo de Vida do S3 são a maneira automatizada e recomendada para gerenciar o ciclo de vida dos objetos, movendo-os para classes de armazenamento mais baratas (como S3 Standard-IA) com base em sua idade ou padrões de acesso.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">98. Qual é a principal diferença entre implantar uma aplicação em múltiplas Zonas de Disponibilidade (AZs) e em múltiplas Regiões?</p>
+            <div class="options">
+                <label><input type="radio" name="q98"> A) Múltiplas AZs são para otimização de custos, enquanto múltiplas Regiões são para performance.</label>
+                <label data-correct="true"><input type="radio" name="q98"> B) Múltiplas AZs fornecem alta disponibilidade dentro de uma única área geográfica, enquanto múltiplas Regiões fornecem recuperação de desastres e atendimento a uma base de usuários global.</label>
+                <label><input type="radio" name="q98"> C) Não há diferença; os termos são intercambiáveis.</label>
+                <label><input type="radio" name="q98"> D) Múltiplas AZs requerem o AWS Direct Connect, enquanto múltiplas Regiões não.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Múltiplas AZs fornecem alta disponibilidade dentro de uma única área geográfica, enquanto múltiplas Regiões fornecem recuperação de desastres e atendimento a uma base de usuários global.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Esta é uma distinção crucial. A implantação Multi-AZ protege contra falhas de um único data center (alta disponibilidade). A implantação Multi-Região protege contra desastres regionais e reduz a latência para usuários em diferentes partes do mundo.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">99. Uma aplicação web está sofrendo um ataque vindo de um intervalo específico de endereços IP. Qual é a maneira mais eficaz de bloquear esse tráfego antes que ele chegue às instâncias EC2?</p>
+            <div class="options">
+                <label><input type="radio" name="q99"> A) Modificando a tabela de rotas da VPC.</label>
+                <label><input type="radio" name="q99"> B) Adicionando uma regra de negação ao Security Group das instâncias.</label>
+                <label><input type="radio" name="q99"> C) Configurando uma Network ACL para negar o tráfego.</label>
+                <label data-correct="true"><input type="radio" name="q99"> D) Criando uma regra baseada em IP no AWS WAF associado a um Application Load Balancer ou CloudFront.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Criando uma regra baseada em IP no AWS WAF associado a um Application Load Balancer ou CloudFront.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS WAF é projetado para filtrar tráfego na borda (no ALB ou CloudFront) com base em regras personalizadas, incluindo o bloqueio de endereços IP ou intervalos de IP específicos, impedindo que o tráfego malicioso chegue à sua infraestrutura. As NACLs também podem fazer isso, mas o WAF é mais específico para a camada de aplicação e mais eficaz quando usado na borda.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">100. Uma revisão do AWS Well-Architected Tool aponta que um banco de dados RDS crítico não tem backups automatizados habilitados. Quais DOIS pilares são MAIS diretamente impactados por este risco?</p>
+            <div class="options">
+                <label data-correct="true"><input type="checkbox" name="q100"> A) Confiabilidade</label>
+                <label><input type="checkbox" name="q100"> B) Segurança</label>
+                <label><input type="checkbox" name="q100"> C) Otimização de Custos</label>
+                <label><input type="checkbox" name="q100"> D) Eficiência de Desempenho</label>
+                <label data-correct="true"><input type="checkbox" name="q100"> E) Excelência Operacional</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A e E</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A falta de backups impacta diretamente a Confiabilidade (capacidade de se recuperar de falhas) e a Excelência Operacional (capacidade de executar sistemas de forma eficaz e responder a eventos, incluindo a automação de procedimentos como backups).</div>
+            </div>
+        </div>
+        </div>
+
+        </div>
+
+    <script>
+        function checkAnswer(button, expectedCorrectCount = 1) {
+            const questionContainer = button.closest('.question-container');
+            const explanationDiv = questionContainer.querySelector('.answer-explanation');
+            const optionsDiv = questionContainer.querySelector('.options');
+            
+            button.disabled = true;
+
+            let selectedInputs = [];
+            const inputType = expectedCorrectCount > 1 ? 'checkbox' : 'radio';
+            selectedInputs = Array.from(optionsDiv.querySelectorAll(`input[type="${inputType}"]:checked`));
+
+            if (selectedInputs.length === 0) {
+                alert('Por favor, selecione uma resposta antes de verificar.');
+                button.disabled = false;
+                return;
+            }
+
+            const allLabels = optionsDiv.querySelectorAll('label');
+            allLabels.forEach(label => {
+                const input = label.querySelector('input');
+                const isSelected = selectedInputs.some(sel => sel === input);
+                const isCorrect = label.hasAttribute('data-correct');
+
+                if (isCorrect) {
+                    label.style.backgroundColor = 'rgba(40, 167, 69, 0.7)';
+                    label.style.borderColor = '#28a745';
+                }
+                
+                if (isSelected && !isCorrect) {
+                     label.style.backgroundColor = 'rgba(220, 53, 69, 0.7)';
+                     label.style.borderColor = '#dc3545';
+                }
+            });
+
+            explanationDiv.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

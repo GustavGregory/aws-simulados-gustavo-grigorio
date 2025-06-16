@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado: Frameworks da AWS</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #e0e0e0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #121212;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        h1 {
+            text-align: center;
+            color: #ff9900;
+            border-bottom: 2px solid #ff9900;
+            padding-bottom: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #5865f2;
+            margin-top: 40px;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .question-container {
+            background-color: #1e1e1e;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 5px solid #ff9900;
+        }
+        .question-text {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 5px;
+            border: 2px solid #444;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .options label:hover {
+            background-color: #333;
+            border-color: #ff9900;
+        }
+        .options input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+            accent-color: #ff9900;
+        }
+        button {
+            background-color: #ff9900;
+            color: #111;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-weight: bold;
+        }
+        .answer-explanation {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0a0a0a;
+            border: 1px solid #43b581;
+            border-radius: 5px;
+            display: none;
+        }
+        .answer-line {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .explanation-line {
+            margin-top: 12px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🏛️ Simulado: Frameworks da AWS</h1>
+        <div class="controls">
+            <button onclick="location.reload()">Refazer Simulado</button>
+        </div>
+
+        <h2>Parte 1: Princípios do Well-Architected Framework</h2>
+
+        <div class="question-container">
+            <p class="question-text">1. A prática de tratar a infraestrutura e suas configurações como software, aplicando práticas de desenvolvimento como versionamento e testes automatizados, refere-se a qual princípio de design da Excelência Operacional?</p>
+            <div class="options">
+                <label><input type="radio" name="q1"> A) Antecipar o fracasso</label>
+                <label><input type="radio" name="q1"> B) Refinar os procedimentos operacionais com frequência</label>
+                <label data-correct="true"><input type="radio" name="q1"> C) Executar operações como código</label>
+                <label><input type="radio" name="q1"> D) Aprender com todas as falhas operacionais</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Executar operações como código</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Este princípio defende a automação da criação e modificação da sua infraestrutura, tratando-a como código. Isso limita o erro humano e garante respostas consistentes.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">2. Qual princípio de design do pilar de Segurança foca em garantir que seja possível rastrear ações e alterações em seu ambiente de volta a quem as fez?</p>
+            <div class="options">
+                <label><input type="radio" name="q2"> A) Implementar uma base de identidade forte</label>
+                <label><input type="radio" name="q2"> B) Aplicar segurança em todas as camadas</label>
+                <label><input type="radio" name="q2"> C) Proteger os dados em trânsito e em repouso</label>
+                <label data-correct="true"><input type="radio" name="q2"> D) Habilitar rastreabilidade</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Habilitar rastreabilidade</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A rastreabilidade é alcançada através de monitoramento, alertas e auditoria de ações e alterações. Serviços como AWS CloudTrail, Amazon CloudWatch e AWS Config são essenciais para isso.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">3. O princípio de design "Escale horizontalmente para aumentar a disponibilidade da carga de trabalho agregada" pertence a qual pilar do Well-Architected Framework?</p>
+            <div class="options">
+                <label><input type="radio" name="q3"> A) Eficiência de Desempenho</label>
+                <label data-correct="true"><input type="radio" name="q3"> B) Confiabilidade</label>
+                <label><input type="radio" name="q3"> C) Otimização de Custos</label>
+                <label><input type="radio" name="q3"> D) Excelência Operacional</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Confiabilidade</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Escalar horizontalmente (adicionar mais recursos, como instâncias) em vez de verticalmente (aumentar o tamanho de um único recurso) é uma estratégia chave para aumentar a resiliência e a disponibilidade, que são o foco do pilar de Confiabilidade.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">4. Qual princípio de design da Eficiência de Desempenho incentiva o uso de serviços como AWS Lambda para evitar o gerenciamento de servidores?</p>
+            <div class="options">
+                <label><input type="radio" name="q4"> A) Democratizar tecnologias avançadas</label>
+                <label><input type="radio" name="q4"> B) Experimente com mais frequência</label>
+                <label><input type="radio" name="q4"> C) Torne-se global em minutos</label>
+                <label data-correct="true"><input type="radio" name="q4"> D) Use arquiteturas sem servidor</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Use arquiteturas sem servidor</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Arquiteturas serverless (sem servidor) removem a sobrecarga operacional de gerenciar servidores físicos ou virtuais. Isso permite que as equipes se concentrem em suas aplicações, melhorando a eficiência.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">5. O princípio "Pare de gastar dinheiro com levantamento de peso indiferenciado" se refere a qual pilar do Well-Architected Framework?</p>
+            <div class="options">
+                <label><input type="radio" name="q5"> A) Excelência Operacional</label>
+                <label><input type="radio" name="q5"> B) Confiabilidade</label>
+                <label data-correct="true"><input type="radio" name="q5"> C) Otimização de Custos</label>
+                <label><input type="radio" name="q5"> D) Sustentabilidade</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Otimização de Custos</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Este princípio de design da Otimização de Custos significa que a AWS lida com o trabalho pesado de gerenciar data centers (como racking, empilhamento e energia), permitindo que você se concentre em seus clientes e projetos de negócio, e não na infraestrutura.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">6. A prática de "antecipar e adotar novas ofertas de hardware e software mais eficientes" é um princípio de design de qual pilar?</p>
+            <div class="options">
+                <label><input type="radio" name="q6"> A) Eficiência de Desempenho</label>
+                <label><input type="radio" name="q6"> B) Otimização de Custos</label>
+                <label data-correct="true"><input type="radio" name="q6"> C) Sustentabilidade</label>
+                <label><input type="radio" name="q6"> D) Confiabilidade</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Sustentabilidade</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O pilar de Sustentabilidade incentiva o uso contínuo das tecnologias mais recentes e eficientes, pois elas geralmente consomem menos energia e recursos para realizar a mesma tarefa, reduzindo o impacto ambiental.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">7. "Faça mudanças frequentes, pequenas e reversíveis" é um princípio de design que ajuda a minimizar o raio de impacto de uma falha. A qual pilar do Well-Architected Framework ele pertence?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q7"> A) Excelência Operacional</label>
+                <label><input type="radio" name="q7"> B) Confiabilidade</label>
+                <label><input type="radio" name="q7"> C) Eficiência de Desempenho</label>
+                <label><input type="radio" name="q7"> D) Segurança</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Excelência Operacional</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Este princípio permite que as equipes revertam rapidamente uma mudança se ela causar problemas, o que melhora a capacidade de operar sistemas de forma eficaz e segura.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">8. Qual princípio de design do pilar de Segurança defende a configuração de múltiplos controles de segurança para proteger sua arquitetura contra falhas?</p>
+            <div class="options">
+                <label><input type="radio" name="q8"> A) Habilitar rastreabilidade</label>
+                <label><input type="radio" name="q8"> B) Automatize as melhores práticas de segurança</label>
+                <label data-correct="true"><input type="radio" name="q8"> C) Aplique segurança em todas as camadas</label>
+                <label><input type="radio" name="q8"> D) Mantenha as pessoas longe dos dados</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Aplique segurança em todas as camadas</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Conhecido como "defesa em profundidade", este princípio recomenda aplicar segurança em múltiplas camadas (ex: borda da rede, VPC, sub-rede, load balancer, instância e aplicação) para fornecer uma proteção mais robusta.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">9. O princípio de design "Recuperar automaticamente de falhas" pertence a qual pilar?</p>
+            <div class="options">
+                <label><input type="radio" name="q9"> A) Excelência Operacional</label>
+                <label data-correct="true"><input type="radio" name="q9"> B) Confiabilidade</label>
+                <label><input type="radio" name="q9"> C) Sustentabilidade</label>
+                <label><input type="radio" name="q9"> D) Otimização de Custos</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Confiabilidade</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A Confiabilidade é alcançada monitorando a saúde dos recursos e tomando ações automáticas para substituir recursos que falharam ou redirecionar o tráfego para longe deles.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">10. A prática de usar serviços como o Amazon SageMaker para facilitar o acesso a tecnologias complexas sem a necessidade de conhecimento especializado é um exemplo de qual princípio de design da Eficiência de Desempenho?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q10"> A) Democratizar tecnologias avançadas</label>
+                <label><input type="radio" name="q10"> B) Tornar-se global em minutos</label>
+                <label><input type="radio" name="q10"> C) Experimentar com mais frequência</label>
+                <label><input type="radio" name="q10"> D) Usar arquiteturas sem servidor</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Democratizar tecnologias avançadas</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Este princípio incentiva o uso de serviços gerenciados da AWS para consumir tecnologias complexas como machine learning, que de outra forma exigiriam um grande esforço e conhecimento para serem implementadas.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">11. "Adote um modelo de consumo" é um princípio de design de qual pilar do Well-Architected Framework?</p>
+            <div class="options">
+                <label><input type="radio" name="q11"> A) Eficiência de Desempenho</label>
+                <label data-correct="true"><input type="radio" name="q11"> B) Otimização de Custos</label>
+                <label><input type="radio" name="q11"> C) Sustentabilidade</label>
+                <label><input type="radio" name="q11"> D) Confiabilidade</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Otimização de Custos</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Este princípio se refere diretamente ao modelo "pague-pelo-uso" da nuvem. Pagar apenas pelos recursos de computação que você consome e escalar para cima ou para baixo conforme as necessidades do negócio é uma prática fundamental da otimização de custos.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">12. Qual princípio de design da Sustentabilidade sugere o uso de serviços como AWS Lambda ou Amazon S3 em vez de instâncias EC2 sempre ativas?</p>
+            <div class="options">
+                <label><input type="radio" name="q12"> A) Entenda seu impacto</label>
+                <label><input type="radio" name="q12"> B) Maximize a utilização</label>
+                <label data-correct="true"><input type="radio" name="q12"> C) Usar serviços gerenciados</label>
+                <label><input type="radio" name="q12"> D) Estabelecer metas de sustentabilidade</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Usar serviços gerenciados</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Serviços gerenciados e serverless operam em uma escala que permite um compartilhamento de recursos muito eficiente, reduzindo a quantidade de infraestrutura ociosa e, consequentemente, o impacto ambiental geral.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">13. A prática de "aprender com todas as falhas operacionais" é um princípio de qual pilar?</p>
+            <div class="options">
+                <label><input type="radio" name="q13"> A) Confiabilidade</label>
+                <label data-correct="true"><input type="radio" name="q13"> B) Excelência Operacional</label>
+                <label><input type="radio" name="q13"> C) Segurança</label>
+                <label><input type="radio" name="q13"> D) Otimização de Custos</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Excelência Operacional</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Este princípio incentiva as equipes a compartilhar as lições aprendidas com as falhas para que melhorias possam ser implementadas em todo o sistema, evitando a repetição de problemas.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">14. Qual princípio de design do pilar de Segurança recomenda o uso de ferramentas como o AWS IAM para controlar o acesso humano aos dados?</p>
+            <div class="options">
+                <label><input type="radio" name="q14"> A) Aplicar segurança em todas as camadas</label>
+                <label><input type="radio" name="q14"> B) Habilitar rastreabilidade</label>
+                <label data-correct="true"><input type="radio" name="q14"> C) Mantenha as pessoas longe dos dados</label>
+                <label><input type="radio" name="q14"> D) Implementar uma base de identidade forte</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Mantenha as pessoas longe dos dados</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O objetivo deste princípio é reduzir ou eliminar a necessidade de acesso humano direto aos dados, utilizando mecanismos e ferramentas automatizadas para realizar as tarefas. O IAM ajuda a reforçar isso, limitando o acesso quando ele é necessário.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">15. O princípio "Pare de adivinhar a capacidade", que envolve o uso de serviços como o AWS Auto Scaling, pertence a qual pilar?</p>
+            <div class="options">
+                <label><input type="radio" name="q15"> A) Otimização de Custos</label>
+                <label><input type="radio" name="q15"> B) Eficiência de Desempenho</label>
+                <label><input type="radio" name="q15"> C) Excelência Operacional</label>
+                <label data-correct="true"><input type="radio" name="q15"> D) Confiabilidade</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Confiabilidade</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Monitorar uma carga de trabalho e provisionar/desprovisionar recursos automaticamente em resposta à demanda é uma prática fundamental de Confiabilidade. Isso garante que a aplicação tenha capacidade suficiente para atender aos usuários sem falhar por sobrecarga.</div>
+            </div>
+        </div>
+
+            <div class="container">
+        <h1>🏛️ Simulado: Frameworks da AWS</h1>
+        <div class="controls">
+            <button onclick="location.reload()">Refazer Simulado</button>
+        </div>
+
+        <h2>Parte 2: Princípios do Cloud Adoption Framework (CAF)</h2>
+
+        <div class="question-container">
+            <p class="question-text">16. Qual perspectiva do AWS CAF ajuda a garantir que os investimentos na nuvem acelerem as ambições de transformação digital e os resultados de negócios?</p>
+            <div class="options">
+                <label><input type="radio" name="q16"> A) Governança</label>
+                <label data-correct="true"><input type="radio" name="q16"> B) Negócios</label>
+                <label><input type="radio" name="q16"> C) Pessoas</label>
+                <label><input type="radio" name="q16"> D) Plataforma</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Negócios</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva de Negócios é responsável por garantir que a adoção da nuvem esteja diretamente ligada aos resultados comerciais e às metas de transformação digital da empresa.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">17. O Diretor de Segurança da Informação (CISO) e o Diretor de Conformidade (CCO) são stakeholders comuns em qual perspectiva do AWS CAF?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q17"> A) Segurança</label>
+                <label><input type="radio" name="q17"> B) Governança</label>
+                <label><input type="radio" name="q17"> C) Operações</label>
+                <label><input type="radio" name="q17"> D) Negócios</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Segurança</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As partes interessadas comuns na perspectiva de Segurança incluem o CISO, o CCO, líderes de auditoria interna e arquitetos/engenheiros de segurança.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">18. Acelerar a jornada para a nuvem com foco na cultura, estrutura organizacional, liderança e mão de obra é o objetivo de qual perspectiva do CAF?</p>
+            <div class="options">
+                <label><input type="radio" name="q18"> A) Negócios</label>
+                <label><input type="radio" name="q18"> B) Governança</label>
+                <label data-correct="true"><input type="radio" name="q18"> C) Pessoas</label>
+                <label><input type="radio" name="q18"> D) Plataforma</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Pessoas</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva Pessoas serve como uma ponte entre tecnologia e negócios, ajudando as organizações a evoluir para uma cultura de crescimento contínuo e aprendizado.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">19. Qual perspectiva do AWS CAF ajuda a garantir que seus serviços de nuvem sejam entregues em um nível que atenda às necessidades de seus negócios?</p>
+            <div class="options">
+                <label><input type="radio" name="q19"> A) Plataforma</label>
+                <label><input type="radio" name="q19"> B) Segurança</label>
+                <label data-correct="true"><input type="radio" name="q19"> C) Operações</label>
+                <label><input type="radio" name="q19"> D) Governança</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Operações</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva Operações ajuda a garantir que seus serviços de nuvem sejam entregues em um nível que atenda às necessidades de seus negócios, definindo como as operações diárias são conduzidas.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">20. Arquitetos e engenheiros são stakeholders comuns em qual perspectiva, responsável por modernizar workloads e implementar novas soluções?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q20"> A) Plataforma</label>
+                <label><input type="radio" name="q20"> B) Operações</label>
+                <label><input type="radio" name="q20"> C) Negócios</label>
+                <label><input type="radio" name="q20"> D) Pessoas</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Plataforma</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As partes interessadas comuns na perspectiva de Plataforma incluem CTO, líderes de tecnologia, arquitetos e engenheiros, que são responsáveis por criar a plataforma de nuvem e modernizar workloads.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">21. Qual perspectiva do AWS CAF ajuda a orquestrar iniciativas na nuvem, maximizando benefícios e minimizando os riscos relacionados à transformação?</p>
+            <div class="options">
+                <label><input type="radio" name="q21"> A) Segurança</label>
+                <label><input type="radio" name="q21"> B) Negócios</label>
+                <label><input type="radio" name="q21"> C) Pessoas</label>
+                <label data-correct="true"><input type="radio" name="q21"> D) Governança</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Governança</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva de Governança ajuda você a orquestrar suas iniciativas de nuvem enquanto maximiza os benefícios organizacionais e minimiza os riscos relacionados à transformação.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">22. Para alcançar a confidencialidade, integridade e disponibilidade dos dados e workloads na nuvem, qual perspectiva do CAF deve ser consultada?</p>
+            <div class="options">
+                <label><input type="radio" name="q22"> A) Plataforma</label>
+                <label data-correct="true"><input type="radio" name="q22"> B) Segurança</label>
+                <label><input type="radio" name="q22"> C) Governança</label>
+                <label><input type="radio" name="q22"> D) Operações</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Segurança</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva Segurança ajuda você a alcançar a tríade da segurança da informação (confidencialidade, integridade e disponibilidade) de seus dados e workloads na nuvem.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">23. O Diretor Executivo (CEO) e o Diretor Financeiro (CFO) são stakeholders comuns em qual perspectiva do CAF?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q23"> A) Negócios</label>
+                <label><input type="radio" name="q23"> B) Pessoas</label>
+                <label><input type="radio" name="q23"> C) Governança</label>
+                <label><input type="radio" name="q23"> D) Operações</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Negócios</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As partes interessadas comuns na perspectiva de Negócios incluem executivos de alto nível como CEO, CFO, COO, CIO e CTO.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">24. Qual perspectiva do CAF é descrita como uma "ponte entre tecnologia e negócios"?</p>
+            <div class="options">
+                <label><input type="radio" name="q24"> A) Plataforma</label>
+                <label data-correct="true"><input type="radio" name="q24"> B) Pessoas</label>
+                <label><input type="radio" name="q24"> C) Governança</label>
+                <label><input type="radio" name="q24"> D) Negócios</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Pessoas</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva Pessoas serve como uma ponte entre tecnologia e negócios, acelerando a jornada para a nuvem para ajudar as organizações a evoluir.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">25. Líderes de infraestrutura e operações e engenheiros de confiabilidade do site (SREs) são stakeholders de qual perspectiva?</p>
+            <div class="options">
+                <label><input type="radio" name="q25"> A) Plataforma</label>
+                <label><input type="radio" name="q25"> B) Segurança</label>
+                <label data-correct="true"><input type="radio" name="q25"> C) Operações</label>
+                <label><input type="radio" name="q25"> D) Governança</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Operações</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As partes interessadas comuns na perspectiva de Operações incluem líderes de infraestrutura e operações, engenheiros de confiabilidade do site e gerentes de serviços de tecnologia da informação.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">26. A tarefa de garantir que os investimentos na nuvem acelerem os resultados de negócios pertence a qual perspectiva?</p>
+            <div class="options">
+                <label><input type="radio" name="q26"> A) Governança</label>
+                <label data-correct="true"><input type="radio" name="q26"> B) Negócios</label>
+                <label><input type="radio" name="q26"> C) Otimização de Custos</label>
+                <label><input type="radio" name="q26"> D) Pessoas</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Negócios</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva de Negócios ajuda a garantir que seus investimentos na nuvem acelerem suas ambições de transformação digital e resultados de negócios.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">27. Qual perspectiva do CAF é responsável por modernizar workloads existentes e implementar novas soluções nativas da nuvem?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q27"> A) Plataforma</label>
+                <label><input type="radio" name="q27"> B) Operações</label>
+                <label><input type="radio" name="q27"> C) Pessoas</label>
+                <label><input type="radio" name="q27"> D) Negócios</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Plataforma</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva Plataforma ajuda você a criar uma plataforma de nuvem híbrida, modernizar workloads existentes e implementar novas soluções nativas da nuvem.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">28. O Diretor de Risco (CRO) e o Diretor de Dados (CDO) são stakeholders de qual perspectiva?</p>
+            <div class="options">
+                <label><input type="radio" name="q28"> A) Negócios</label>
+                <label data-correct="true"><input type="radio" name="q28"> B) Governança</label>
+                <label><input type="radio" name="q28"> C) Segurança</label>
+                <label><input type="radio" name="q28"> D) Pessoas</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Governança</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As partes interessadas comuns na perspectiva de Governança incluem diretor de transformação, CIO, CTO, CFO, diretor de dados (CDO) e diretor de risco (CRO).</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">29. Qual perspectiva foca em ajudar as organizações a evoluir para uma cultura de crescimento contínuo e aprendizado?</p>
+            <div class="options">
+                <label><input type="radio" name="q29"> A) Governança</label>
+                <label><input type="radio" name="q29"> B) Operações</label>
+                <label data-correct="true"><input type="radio" name="q29"> C) Pessoas</label>
+                <label><input type="radio" name="q29"> D) Negócios</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Pessoas</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva Pessoas ajuda as organizações a evoluir mais rapidamente para uma cultura de crescimento contínuo, aprendizado e onde a mudança se torna normal.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">30. A perspectiva do AWS CAF que lida com a confidencialidade e integridade dos dados na nuvem é a de:</p>
+            <div class="options">
+                <label><input type="radio" name="q30"> A) Plataforma</label>
+                <label><input type="radio" name="q30"> B) Governança</label>
+                <label data-correct="true"><input type="radio" name="q30"> C) Segurança</label>
+                <label><input type="radio" name="q30"> D) Operações</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Segurança</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A perspectiva Segurança ajuda você a alcançar a confidencialidade, integridade e disponibilidade de seus dados e workloads na nuvem.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function checkAnswer(button, expectedCorrectCount = 1) {
+            const questionContainer = button.closest('.question-container');
+            const explanationDiv = questionContainer.querySelector('.answer-explanation');
+            const optionsDiv = questionContainer.querySelector('.options');
+            
+            button.disabled = true;
+
+            let selectedInputs = [];
+            const inputType = expectedCorrectCount > 1 ? 'checkbox' : 'radio';
+            selectedInputs = Array.from(optionsDiv.querySelectorAll(`input[type="${inputType}"]:checked`));
+
+            if (selectedInputs.length === 0) {
+                alert('Por favor, selecione uma resposta antes de verificar.');
+                button.disabled = false;
+                return;
+            }
+
+            const allLabels = optionsDiv.querySelectorAll('label');
+            allLabels.forEach(label => {
+                const input = label.querySelector('input');
+                const isSelected = selectedInputs.some(sel => sel === input);
+                const isCorrect = label.hasAttribute('data-correct');
+
+                if (isCorrect) {
+                    label.style.backgroundColor = 'rgba(40, 167, 69, 0.7)';
+                    label.style.borderColor = '#28a745';
+                }
+                
+                if (isSelected && !isCorrect) {
+                     label.style.backgroundColor = 'rgba(220, 53, 69, 0.7)';
+                     label.style.borderColor = '#dc3545';
+                }
+            });
+
+            explanationDiv.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

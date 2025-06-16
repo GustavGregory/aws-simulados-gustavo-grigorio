@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Simulado - AWS Cloud Practitioner CLF-C02</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #e0e0e0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #121212;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        h1 {
+            text-align: center;
+            color: #ff9900;
+            border-bottom: 2px solid #ff9900;
+            padding-bottom: 10px;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .question-container {
+            background-color: #1e1e1e;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 5px solid #ff9900;
+        }
+        .question-text {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 5px;
+            border: 2px solid #444;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .options label:hover {
+            background-color: #333;
+            border-color: #ff9900;
+        }
+        .options input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+            accent-color: #ff9900;
+        }
+        button {
+            background-color: #ff9900;
+            color: #111;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-weight: bold;
+        }
+        .answer-explanation {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0a0a0a;
+            border: 1px solid #43b581;
+            border-radius: 5px;
+            display: none;
+        }
+        .answer-line {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .explanation-line {
+            margin-top: 12px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>⚙️ Simulado: Conceitos de Rede e Serviços Essenciais</h1>
+        <div class="controls">
+            <button onclick="location.reload()">Refazer Simulado</button>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">1. O que é um Grupo de Segurança (Security Group)?</p>
+            <div class="options">
+                <label><input type="radio" name="q1"> A) Um firewall que opera no nível da sub-rede.</label>
+                <label data-correct="true"><input type="radio" name="q1"> B) Um firewall virtual que opera no nível da instância EC2 para controlar o tráfego de entrada e saída.</label>
+                <label><input type="radio" name="q1"> C) Um serviço para agrupar usuários com as mesmas permissões.</label>
+                <label><input type="radio" name="q1"> D) Um componente da VPC que permite a conexão com a internet.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Um firewall virtual que opera no nível da instância EC2 para controlar o tráfego de entrada e saída.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Security Groups são a primeira linha de defesa no nível da instância (ENI), controlando o tráfego que pode chegar e sair dela.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">2. O que significa dizer que um Grupo de Segurança é "stateful"?</p>
+            <div class="options">
+                <label><input type="radio" name="q2"> A) Que ele só permite regras de negação (Deny).</label>
+                <label data-correct="true"><input type="radio" name="q2"> B) Que se você permitir uma solicitação de entrada, o tráfego de resposta é automaticamente permitido, independentemente das regras de saída.</label>
+                <label><input type="radio" name="q2"> C) Que você precisa criar regras separadas para o tráfego de entrada e de saída.</label>
+                <label><input type="radio" name="q2"> D) Que ele não mantém o estado das conexões de rede.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Que se você permitir uma solicitação de entrada, o tráfego de resposta é automaticamente permitido, independentemente das regras de saída.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> "Stateful" significa que o firewall mantém o controle do estado da conexão. Se uma conexão de entrada é permitida, a resposta dessa mesma conexão pode sair sem precisar de uma regra de saída explícita.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">3. O que é uma Lista de Controle de Acesso de Rede (Network ACL)?</p>
+            <div class="options">
+                <label><input type="radio" name="q3"> A) Um firewall que opera no nível da instância.</label>
+                <label><input type="radio" name="q3"> B) Um serviço de DNS.</label>
+                <label data-correct="true"><input type="radio" name="q3"> C) Uma camada opcional de segurança para uma VPC que atua como um firewall para controlar o tráfego de entrada e saída de uma ou mais sub-redes.</label>
+                <label><input type="radio" name="q3"> D) Um balanceador de carga de rede.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Uma camada opcional de segurança para uma VPC que atua como um firewall para controlar o tráfego de entrada e saída de uma ou mais sub-redes.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As NACLs são a camada de defesa no nível da sub-rede, filtrando o tráfego antes mesmo de ele chegar aos Grupos de Segurança das instâncias.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">4. O que significa dizer que uma Network ACL é "stateless"?</p>
+            <div class="options">
+                <label><input type="radio" name="q4"> A) Que ela permite todo o tráfego de retorno automaticamente.</label>
+                <label data-correct="true"><input type="radio" name="q4"> B) Que ela não armazena informações sobre as conexões, exigindo regras explícitas tanto para o tráfego de entrada quanto para o de saída.</label>
+                <label><input type="radio" name="q4"> C) Que ela só permite regras de "Allow".</label>
+                <label><input type="radio" name="q4"> D) Que ela opera globalmente em todas as regiões.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Que ela não armazena informações sobre as conexões, exigindo regras explícitas tanto para o tráfego de entrada quanto para o de saída.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> "Stateless" (sem estado) é o oposto de "stateful". Se você permitir uma solicitação de entrada (ex: porta 80), precisa criar uma regra de saída separada para permitir a resposta (em uma porta efêmera).</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">5. O que faz uma Tabela de Rotas (Route Table) em uma Amazon VPC?</p>
+            <div class="options">
+                <label><input type="radio" name="q5"> A) Filtra o tráfego de rede com base em portas e protocolos.</label>
+                <label data-correct="true"><input type="radio" name="q5"> B) Contém um conjunto de regras, chamadas rotas, que são usadas para determinar para onde o tráfego de rede é direcionado.</label>
+                <label><input type="radio" name="q5"> C) Armazena logs de todas as conexões de rede.</label>
+                <label><input type="radio" name="q5"> D) Conecta a VPC a um data center on-premises.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Contém um conjunto de regras, chamadas rotas, que são usadas para determinar para onde o tráfego de rede é direcionado.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Assim como um roteador físico, uma Tabela de Rotas na VPC direciona os pacotes de rede. Por exemplo, uma rota para `0.0.0.0/0` direciona todo o tráfego desconhecido para um Internet Gateway para que ele possa chegar à internet.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">6. O que faz um Internet Gateway (IGW)?</p>
+            <div class="options">
+                <label><input type="radio" name="q6"> A) Cria uma conexão privada e dedicada com a AWS.</label>
+                <label data-correct="true"><input type="radio" name="q6"> B) Permite a comunicação entre recursos em sua VPC e a internet.</label>
+                <label><input type="radio" name="q6"> C) Atua como um firewall para a VPC.</label>
+                <label><input type="radio" name="q6"> D) Traduz nomes de domínio para endereços IP.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Permite a comunicação entre recursos em sua VPC e a internet.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Um IGW é um componente horizontalmente escalável, redundante e altamente disponível que você anexa à sua VPC para habilitar o acesso à internet.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">7. O que faz um NAT Gateway?</p>
+            <div class="options">
+                <label><input type="radio" name="q7"> A) Bloqueia todo o tráfego de saída para a internet.</label>
+                <label data-correct="true"><input type="radio" name="q7"> B) Permite que instâncias em uma sub-rede privada iniciem conexões com a internet, mas impede que a internet inicie conexões com essas instâncias.</label>
+                <label><input type="radio" name="q7"> C) Conecta duas VPCs diferentes.</label>
+                <label><input type="radio" name="q7"> D) Traduz endereços IP públicos para privados.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Permite que instâncias em uma sub-rede privada iniciem conexões com a internet, mas impede que a internet inicie conexões com essas instâncias.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> É um serviço gerenciado que realiza a Tradução de Endereços de Rede (NAT), permitindo que recursos em sub-redes privadas acessem a internet (ex: para atualizações) sem expor seus IPs privados.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">8. O que faz o AWS Fargate?</p>
+            <div class="options">
+                <label><input type="radio" name="q8"> A) Orquestra fluxos de trabalho com múltiplas funções Lambda.</label>
+                <label><input type="radio" name="q8"> B) É um serviço de banco de dados sem servidor.</label>
+                <label><input type="radio" name="q8"> C) Gerencia o Kubernetes na AWS.</label>
+                <label data-correct="true"><input type="radio" name="q8"> D) É um mecanismo de computação "serverless" para contêineres, que elimina a necessidade de gerenciar instâncias EC2.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) É um mecanismo de computação "serverless" para contêineres, que elimina a necessidade de gerenciar instâncias EC2.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Ao usar o Fargate com o Amazon ECS ou EKS, você não precisa se preocupar em provisionar e gerenciar a infraestrutura de servidores. Você apenas define os contêineres e o Fargate os executa.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">9. O que faz o Elastic Load Balancing (ELB)?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q9"> A) Distribui automaticamente o tráfego de entrada entre múltiplos destinos, como instâncias EC2.</label>
+                <label><input type="radio" name="q9"> B) Aumenta automaticamente o número de instâncias com base na demanda.</label>
+                <label><input type="radio" name="q9"> C) Conecta redes on-premises à AWS.</label>
+                <label><input type="radio" name="q9"> D) Armazena em cache o conteúdo perto dos usuários.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Distribui automaticamente o tráfego de entrada entre múltiplos destinos, como instâncias EC2.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O ELB atua como um "gerente de tráfego", recebendo as solicitações e distribuindo-as de forma inteligente entre os servidores disponíveis para garantir alta disponibilidade e escalabilidade.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">10. O que faz o Amazon GuardDuty?</p>
+            <div class="options">
+                <label><input type="radio" name="q10"> A) Verifica vulnerabilidades em suas instâncias EC2.</label>
+                <label><input type="radio" name="q10"> B) Protege contra ataques DDoS.</label>
+                <label data-correct="true"><input type="radio" name="q10"> C) É um serviço de detecção de ameaças que monitora continuamente atividades maliciosas e comportamento não autorizado.</label>
+                <label><input type="radio" name="q10"> D) Gerencia as chaves de criptografia.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) É um serviço de detecção de ameaças que monitora continuamente atividades maliciosas e comportamento não autorizado.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O GuardDuty analisa de forma inteligente os logs da AWS (CloudTrail, VPC Flow Logs, DNS logs) para identificar ameaças como o uso de credenciais comprometidas, varredura de portas ou comunicação com IPs maliciosos.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">11. O que faz o AWS Shield?</p>
+            <div class="options">
+                <label><input type="radio" name="q11"> A) Atua como um firewall para aplicações web.</label>
+                <label data-correct="true"><input type="radio" name="q11"> B) Fornece proteção gerenciada contra ataques de Negação de Serviço Distribuída (DDoS).</label>
+                <label><input type="radio" name="q11"> C) Audita as chamadas de API na sua conta.</label>
+                <label><input type="radio" name="q11"> D) Escaneia suas instâncias em busca de vulnerabilidades.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Fornece proteção gerenciada contra ataques de Negação de Serviço Distribuída (DDoS).</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Shield é projetado especificamente para proteger suas aplicações contra ataques DDoS. O nível Standard é ativado por padrão para todos os clientes sem custo adicional.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">12. O que faz o AWS WAF?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q12"> A) É um firewall de aplicação web que ajuda a proteger contra exploits comuns como SQL injection e XSS.</label>
+                <label><input type="radio" name="q12"> B) É um firewall no nível da sub-rede que controla o tráfego por porta e IP.</label>
+                <label><input type="radio" name="q12"> C) É um serviço que detecta ameaças em sua conta AWS.</label>
+                <label><input type="radio" name="q12"> D) Protege contra ataques DDoS volumétricos na camada de rede.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) É um firewall de aplicação web que ajuda a proteger contra exploits comuns como SQL injection e XSS.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS WAF (Web Application Firewall) opera na camada 7 (HTTP/S) para proteger suas aplicações web, permitindo que você crie regras para bloquear padrões de tráfego malicioso.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">13. Qual a principal finalidade de uma conexão AWS Site-to-Site VPN?</p>
+            <div class="options">
+                <label><input type="radio" name="q13"> A) Conectar duas VPCs dentro da mesma Região.</label>
+                <label data-correct="true"><input type="radio" name="q13"> B) Criar uma conexão segura e criptografada entre uma rede on-premises e uma VPC através da internet.</label>
+                <label><input type="radio" name="q13"> C) Acelerar a entrega de conteúdo para usuários globais.</label>
+                <label><input type="radio" name="q13"> D) Fornecer uma conexão de rede física e dedicada à AWS.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Criar uma conexão segura e criptografada entre uma rede on-premises e uma VPC através da internet.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Uma VPN (Virtual Private Network) cria um "túnel" seguro sobre a internet pública, permitindo que seu data center se comunique de forma privada com seus recursos na VPC.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">14. Qual é a principal diferença entre um Internet Gateway (IGW) e um NAT Gateway?</p>
+            <div class="options">
+                <label><input type="radio" name="q14"> A) O IGW é para tráfego de saída, enquanto o NAT Gateway é para tráfego de entrada.</label>
+                <label><input type="radio" name="q14"> B) O IGW conecta a VPC a outras VPCs, e o NAT Gateway conecta à internet.</label>
+                <label data-correct="true"><input type="radio" name="q14"> C) O IGW permite comunicação bidirecional com a internet para sub-redes públicas, enquanto o NAT Gateway permite apenas comunicação de saída para sub-redes privadas.</label>
+                <label><input type="radio" name="q14"> D) Não há diferença funcional, apenas de custo.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) O IGW permite comunicação bidirecional com a internet para sub-redes públicas, enquanto o NAT Gateway permite apenas comunicação de saída para sub-redes privadas.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Um IGW é necessário para qualquer comunicação com a internet. Um NAT Gateway é um recurso específico que permite que recursos privados acessem a internet sem serem acessíveis por ela.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">15. O que faz o Amazon Route 53?</p>
+            <div class="options">
+                <label><input type="radio" name="q15"> A) Balanceia a carga de tráfego entre instâncias EC2.</label>
+                <label><input type="radio" name="q15"> B) Fornece armazenamento de objetos escalável.</label>
+                <label><input type="radio" name="q15"> C) Cria redes virtuais privadas.</label>
+                <label data-correct="true"><input type="radio" name="q15"> D) É um serviço de DNS que traduz nomes de domínio em endereços IP e roteia o tráfego.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) É um serviço de DNS que traduz nomes de domínio em endereços IP e roteia o tráfego.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Route 53 é o serviço de DNS da AWS. Sua função principal é direcionar os usuários para aplicações da internet, traduzindo nomes como `www.exemplo.com` para endereços IP.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">16. Para que serve o Amazon ElastiCache?</p>
+            <div class="options">
+                <label><input type="radio" name="q16"> A) Para arquivar dados de longo prazo com baixo custo.</label>
+                <label data-correct="true"><input type="radio" name="q16"> B) Para acelerar o desempenho de aplicações, armazenando dados frequentemente acessados em memória.</label>
+                <label><input type="radio" name="q16"> C) Para analisar grandes volumes de dados em um data warehouse.</label>
+                <label><input type="radio" name="q16"> D) Para gerenciar bancos de dados relacionais.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Para acelerar o desempenho de aplicações, armazenando dados frequentemente acessados em memória.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O ElastiCache é um serviço de cache em memória totalmente gerenciado. Ele melhora a performance de aplicações web ao permitir a recuperação de informações de caches rápidos em memória, em vez de depender inteiramente de bancos de dados mais lentos baseados em disco.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">17. Qual é a principal diferença entre um Security Group e uma Network ACL (NACL)?</p>
+            <div class="options">
+                <label><input type="radio" name="q17"> A) Security Groups são pagos, NACLs são gratuitas.</label>
+                <label><input type="radio" name="q17"> B) Security Groups suportam regras "Allow" e "Deny", enquanto NACLs suportam apenas "Allow".</label>
+                <label data-correct="true"><input type="radio" name="q17"> C) Security Groups são stateful e operam no nível da instância, enquanto NACLs são stateless e operam no nível da sub-rede.</label>
+                <label><input type="radio" name="q17"> D) Security Groups são para tráfego TCP, NACLs são para tráfego UDP.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Security Groups são stateful e operam no nível da instância, enquanto NACLs são stateless e operam no nível da sub-rede.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Esta é a distinção mais importante: Security Groups (nível da instância, stateful) e NACLs (nível da sub-rede, stateless). Ser stateful significa que o tráfego de resposta é automaticamente permitido.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">18. O que faz o Amazon S3 Glacier?</p>
+            <div class="options">
+                <label><input type="radio" name="q18"> A) Fornece armazenamento de alta performance para bancos de dados.</label>
+                <label data-correct="true"><input type="radio" name="q18"> B) É um serviço de armazenamento de arquivamento de dados de baixo custo e longo prazo.</label>
+                <label><input type="radio" name="q18"> C) Armazena e distribui conteúdo de vídeo globalmente.</label>
+                <label><input type="radio" name="q18"> D) Fornece discos virtuais para instâncias EC2.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) É um serviço de armazenamento de arquivamento de dados de baixo custo e longo prazo.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As classes de armazenamento Amazon S3 Glacier (Flexible Retrieval e Deep Archive) são projetadas para arquivamento seguro e durável de dados que não precisam de acesso imediato, com o menor custo de armazenamento possível.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">19. O que faz o serviço AWS Organizations?</p>
+            <div class="options">
+                <label><input type="radio" name="q19"> A) Organiza os arquivos dentro de um bucket S3.</label>
+                <label><input type="radio" name="q19"> B) Fornece recomendações sobre como organizar sua arquitetura.</label>
+                <label><input type="radio" name="q19"> C) Monitora a organização da sua rede VPC.</label>
+                <label data-correct="true"><input type="radio" name="q19"> D) Ajuda a gerenciar e governar centralmente múltiplas contas AWS.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Ajuda a gerenciar e governar centralmente múltiplas contas AWS.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Organizations permite que você agrupe contas, aplique políticas de governança (SCPs) e consolide o faturamento, simplificando o gerenciamento de múltiplos ambientes AWS.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">20. Para que serve o AWS Cost Explorer?</p>
+            <div class="options">
+                <label><input type="radio" name="q20"> A) Para definir alertas de orçamento.</label>
+                <label><input type="radio" name="q20"> B) Para estimar custos futuros de uma nova arquitetura.</label>
+                <label data-correct="true"><input type="radio" name="q20"> C) Para visualizar, entender e gerenciar seus custos e uso da AWS ao longo do tempo com gráficos.</label>
+                <label><input type="radio" name="q20"> D) Para obter recomendações sobre como reduzir custos.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Para visualizar, entender e gerenciar seus custos e uso da AWS ao longo do tempo com gráficos.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Cost Explorer é a principal ferramenta de *análise* visual. Ele permite que você mergulhe em seus dados de custo e uso, filtre por serviço ou tag, e identifique tendências para entender onde o dinheiro está sendo gasto.</div>
+            </div>
+        </div>
+
+            <div class="container">
+        <h1>🧠 Simulado: IA, Mensageria e PaaS ⚙️</h1>
+        <div class="controls">
+            <button onclick="location.reload()">Refazer Simulado</button>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">1. O que faz o serviço AWS Elastic Beanstalk?</p>
+            <div class="options">
+                <label><input type="radio" name="q1"> A) Executa código em resposta a eventos sem gerenciar servidores.</label>
+                <label data-correct="true"><input type="radio" name="q1"> B) Simplifica a implantação e o gerenciamento de aplicações web, automatizando a configuração da infraestrutura subjacente.</label>
+                <label><input type="radio" name="q1"> C) Fornece servidores virtuais privados (VPS) com um custo mensal fixo.</label>
+                <label><input type="radio" name="q1"> D) Orquestra contêineres Docker usando Kubernetes.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Simplifica a implantação e o gerenciamento de aplicações web, automatizando a configuração da infraestrutura subjacente.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Elastic Beanstalk é um serviço de Plataforma como Serviço (PaaS). O desenvolvedor apenas faz o upload do código da aplicação, e o Beanstalk cuida do provisionamento de capacidade, balanceamento de carga, escalabilidade e monitoramento da saúde da aplicação.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">2. Uma aplicação precisa enviar uma única mensagem de alerta de fraude para múltiplos destinos simultaneamente: um e-mail para a equipe de segurança, um SMS para o gerente e uma função Lambda para bloquear a conta. Qual serviço é ideal para essa distribuição de mensagens?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q2"> A) Amazon SNS (Simple Notification Service)</label>
+                <label><input type="radio" name="q2"> B) Amazon SQS (Simple Queue Service)</label>
+                <label><input type="radio" name="q2"> C) AWS Step Functions</label>
+                <label><input type="radio" name="q2"> D) Amazon CloudWatch</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Amazon SNS (Simple Notification Service)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O SNS utiliza um modelo de publicação/assinatura (pub/sub), que é perfeito para o padrão "um para muitos". Uma única mensagem publicada em um tópico SNS é entregue a todos os seus assinantes (endpoints de e-mail, SMS, Lambda, etc.).</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">3. Uma aplicação de processamento de pedidos recebe milhares de pedidos por minuto. Para evitar sobrecarregar o servidor de processamento, a empresa quer armazenar os pedidos em uma fila para que sejam processados de forma assíncrona. Qual serviço deve ser usado?</p>
+            <div class="options">
+                <label><input type="radio" name="q3"> A) Amazon SNS</label>
+                <label><input type="radio" name="q3"> B) Amazon Kinesis</label>
+                <label><input type="radio" name="q3"> C) Amazon RDS</label>
+                <label data-correct="true"><input type="radio" name="q3"> D) Amazon SQS</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Amazon SQS</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O SQS (Simple Queue Service) é um serviço de fila de mensagens gerenciado. Ele é ideal para desacoplar componentes, permitindo que um sistema (o frontend) envie mensagens (pedidos) para uma fila, e outro sistema (o backend) as consuma em seu próprio ritmo.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">4. Para criar uma aplicação que analisa e modela dados altamente conectados, como redes sociais, mecanismos de recomendação ("quem comprou isso também comprou aquilo") ou detecção de fraudes, qual tipo de banco de dados gerenciado da AWS é o mais apropriado?</p>
+            <div class="options">
+                <label><input type="radio" name="q4"> A) Amazon Aurora</label>
+                <label data-correct="true"><input type="radio" name="q4"> B) Amazon Neptune</label>
+                <label><input type="radio" name="q4"> C) Amazon DynamoDB</label>
+                <label><input type="radio" name="q4"> D) Amazon Redshift</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Amazon Neptune</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Neptune é um serviço de banco de dados de grafos. Os bancos de dados de grafos são projetados especificamente para armazenar e navegar por relacionamentos complexos entre entidades, o que é perfeito para os casos de uso mencionados.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">5. Uma empresa de notícias quer converter seus artigos de texto em áudio para criar podcasts automatizados com vozes naturais. Qual serviço de IA da AWS pode realizar essa tarefa de conversão de texto em fala?</p>
+            <div class="options">
+                <label><input type="radio" name="q5"> A) Amazon Transcribe</label>
+                <label><input type="radio" name="q5"> B) Amazon Lex</label>
+                <label data-correct="true"><input type="radio" name="q5"> C) Amazon Polly</label>
+                <label><input type="radio" name="q5"> D) Amazon Comprehend</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Amazon Polly</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Polly é um serviço que transforma texto em fala realista, permitindo criar aplicações que falam e construir categorias totalmente novas de produtos habilitados para fala.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">6. O AWS Elastic Beanstalk é considerado qual tipo de modelo de serviço em nuvem?</p>
+            <div class="options">
+                <label><input type="radio" name="q6"> A) Infraestrutura como Serviço (IaaS)</label>
+                <label data-correct="true"><input type="radio" name="q6"> B) Plataforma como Serviço (PaaS)</label>
+                <label><input type="radio" name="q6"> C) Software como Serviço (SaaS)</label>
+                <label><input type="radio" name="q6"> D) Função como Serviço (FaaS)</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Plataforma como Serviço (PaaS)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Como o Elastic Beanstalk gerencia a infraestrutura subjacente (plataforma) e permite que o desenvolvedor se concentre apenas no código da aplicação, ele é classificado como PaaS.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">7. Uma aplicação precisa analisar o conteúdo de imagens para identificar objetos, rostos e textos. Qual serviço de IA da AWS oferece essa funcionalidade?</p>
+            <div class="options">
+                <label><input type="radio" name="q7"> A) Amazon Textract</label>
+                <label><input type="radio" name="q7"> B) Amazon Comprehend</label>
+                <label><input type="radio" name="q7"> C) Amazon SageMaker</label>
+                <label data-correct="true"><input type="radio" name="q7"> D) Amazon Rekognition</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Amazon Rekognition</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Rekognition facilita a adição de análise de imagem e vídeo às suas aplicações usando tecnologia de deep learning comprovada e altamente escalável que não requer conhecimento em machine learning.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">8. Qual é a principal diferença entre o Amazon ECS e o AWS Elastic Beanstalk?</p>
+            <div class="options">
+                <label><input type="radio" name="q8"> A) ECS é para aplicações web, e Elastic Beanstalk é para contêineres.</label>
+                <label data-correct="true"><input type="radio" name="q8"> B) ECS oferece controle granular sobre a orquestração de contêineres, enquanto o Elastic Beanstalk é uma plataforma gerenciada que abstrai a infraestrutura.</label>
+                <label><input type="radio" name="q8"> C) ECS só roda com Kubernetes, enquanto o Elastic Beanstalk não.</label>
+                <label><input type="radio" name="q8"> D) ECS é mais barato, mas menos escalável que o Elastic Beanstalk.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) ECS oferece controle granular sobre a orquestração de contêineres, enquanto o Elastic Beanstalk é uma plataforma gerenciada que abstrai a infraestrutura.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O ECS é um orquestrador que dá mais flexibilidade e controle sobre como os contêineres são executados (IaaS/CaaS). O Elastic Beanstalk é uma camada de abstração acima disso (PaaS), onde você se preocupa menos com a infraestrutura e mais com o código.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">9. Uma empresa precisa extrair automaticamente textos e dados de formulários digitalizados (como PDFs e imagens de faturas). Qual serviço de IA é projetado para essa tarefa?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q9"> A) Amazon Textract</label>
+                <label><input type="radio" name="q9"> B) Amazon Transcribe</label>
+                <label><input type="radio" name="q9"> C) Amazon Comprehend</label>
+                <label><input type="radio" name="q9"> D) Amazon Rekognition</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Amazon Textract</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon Textract vai além do simples OCR (reconhecimento óptico de caracteres). Ele identifica o conteúdo de campos em formulários e informações armazenadas em tabelas, extraindo os dados de forma estruturada.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">10. Qual a principal característica de um banco de dados de GRAFOS como o Amazon Neptune?</p>
+            <div class="options">
+                <label><input type="radio" name="q10"> A) Armazenar dados em tabelas com linhas e colunas.</label>
+                <label><input type="radio" name="q10"> B) Armazenar dados como pares de chave-valor.</label>
+                <label data-correct="true"><input type="radio" name="q10"> C) Priorizar e otimizar a consulta de relacionamentos entre os dados.</label>
+                <label><input type="radio" name="q10"> D) Ser ideal para consultas analíticas em dados históricos.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Priorizar e otimizar a consulta de relacionamentos entre os dados.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Um banco de dados de grafos usa estruturas de grafo com nós, arestas e propriedades para representar e armazenar dados. Ele é otimizado para navegar e consultar as conexões complexas entre os pontos de dados.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">11. Um processo de negócio envolve uma etapa de processamento de imagem, seguida pelo envio de uma notificação e, finalmente, o arquivamento do resultado. Qual serviço da AWS é ideal para orquestrar essa sequência de etapas de forma visual e resiliente?</p>
+            <div class="options">
+                <label><input type="radio" name="q11"> A) Amazon SQS</label>
+                <label data-correct="true"><input type="radio" name="q11"> B) AWS Step Functions</label>
+                <label><input type="radio" name="q11"> C) Amazon SNS</label>
+                <label><input type="radio" name="q11"> D) AWS Lambda</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) AWS Step Functions</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Step Functions é um orquestrador de fluxos de trabalho (workflow) que permite coordenar múltiplos serviços AWS (como Lambda, SNS, etc.) em uma sequência lógica, com tratamento de erros e lógica de ramificação.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">12. Para qual finalidade principal uma empresa utilizaria o Amazon Rekognition?</p>
+            <div class="options">
+                <label><input type="radio" name="q12"> A) Para construir chatbots de voz e texto.</label>
+                <label data-correct="true"><input type="radio" name="q12"> B) Para adicionar análise de imagem e vídeo a uma aplicação.</label>
+                <label><input type="radio" name="q12"> C) Para transcrever reuniões de áudio para texto.</label>
+                <label><input type="radio" name="q12"> D) Para criar, treinar e implantar modelos de ML.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Para adicionar análise de imagem e vídeo a uma aplicação.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Rekognition é um serviço de IA pré-treinado que pode identificar objetos, pessoas, texto, cenas e atividades em imagens e vídeos, sem a necessidade de conhecimento em machine learning.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">13. Qual serviço da AWS permite que um desenvolvedor faça o upload de seu código (ex: Java, .NET, Python) e o serviço automaticamente provisiona e gerencia toda a infraestrutura necessária para rodar a aplicação?</p>
+            <div class="options">
+                <label><input type="radio" name="q13"> A) AWS CodeDeploy</label>
+                <label><input type="radio" name="q13"> B) AWS CloudFormation</label>
+                <label><input type="radio" name="q13"> C) Amazon EC2</label>
+                <label data-correct="true"><input type="radio" name="q13"> D) AWS Elastic Beanstalk</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) AWS Elastic Beanstalk</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Elastic Beanstalk é um serviço de orquestração fácil de usar para implantar e escalar aplicações e serviços web. Você simplesmente carrega seu código, e o Elastic Beanstalk lida automaticamente com a implantação.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">14. Qual é a principal diferença de comunicação entre o Amazon SQS e o Amazon SNS?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q14"> A) SQS usa um modelo de "polling" (consumidor busca a mensagem), enquanto SNS usa um modelo "push" (serviço empurra a mensagem).</label>
+                <label><input type="radio" name="q14"> B) SQS é para mensagens pequenas, SNS é para mensagens grandes.</label>
+                <label><input type="radio" name="q14"> C) SQS é um serviço global, SNS é regional.</label>
+                <label><input type="radio" name="q14"> D) SQS requer provisionamento de servidores, SNS é serverless.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) SQS usa um modelo de "polling" (consumidor busca a mensagem), enquanto SNS usa um modelo "push" (serviço empurra a mensagem).</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> No SQS, a aplicação consumidora é responsável por solicitar (fazer polling) mensagens da fila. No SNS, é o próprio serviço que se encarrega de "empurrar" (fazer push) a mensagem para todos os endpoints inscritos.</div>
+            </div>
+        </div>
+
+		<div class="question-container">
+            <p class="question-text">15. Para criar um banco de dados otimizado para dados de séries temporais (como medições de sensores de IoT ao longo do tempo), qual serviço da AWS é uma escolha adequada?</p>
+            <div class="options">
+                <label><input type="radio" name="q15"> A) Amazon Neptune</label>
+                <label data-correct="true"><input type="radio" name="q15"> B) Amazon Timestream</label>
+                <label><input type="radio" name="q15"> C) Amazon RDS</label>
+                <label><input type="radio" name="q15"> D) Amazon DocumentDB</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Amazon Timestream</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Embora não estivesse na sua lista inicial, o Amazon Timestream é o serviço de banco de dados serverless rápido, escalável e construído especificamente para cargas de trabalho de IoT e operacionais que envolvem dados de séries temporais.</div>
+            </div>
+        </div>
+        
+    <div class="container">
+        <h1>☁️ Simulado: Modelos de Serviço (IaaS, PaaS, SaaS)</h1>
+        <div class="controls">
+            <button onclick="location.reload()">Refazer Simulado</button>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">1. Qual modelo de serviço em nuvem oferece os blocos de construção fundamentais de TI, como servidores virtuais e armazenamento, e geralmente oferece o maior nível de flexibilidade e controle sobre seus recursos?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q1"> A) Infraestrutura como Serviço (IaaS)</label>
+                <label><input type="radio" name="q1"> B) Plataforma como Serviço (PaaS)</label>
+                <label><input type="radio" name="q1"> C) Software como Serviço (SaaS)</label>
+                <label><input type="radio" name="q1"> D) Função como Serviço (FaaS)</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Infraestrutura como Serviço (IaaS)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O IaaS fornece acesso a recursos de computação, armazenamento e rede. O Amazon EC2 é o principal exemplo de IaaS, onde você gerencia o sistema operacional e as aplicações, enquanto a AWS gerencia o hardware físico.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">2. Um desenvolvedor quer implantar sua aplicação escrita em Python na AWS sem se preocupar em provisionar servidores, gerenciar o sistema operacional ou configurar o balanceamento de carga. Ele só quer fazer o upload do código. Qual serviço, que representa um modelo PaaS, ele deve usar?</p>
+            <div class="options">
+                <label><input type="radio" name="q2"> A) Amazon EC2</label>
+                <label><input type="radio" name="q2"> B) Amazon S3</label>
+                <label data-correct="true"><input type="radio" name="q2"> C) AWS Elastic Beanstalk</label>
+                <label><input type="radio" name="q2"> D) Amazon VPC</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) AWS Elastic Beanstalk</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Elastic Beanstalk é um exemplo clássico de Plataforma como Serviço (PaaS). Ele abstrai a infraestrutura subjacente, permitindo que os desenvolvedores foquem apenas no código da aplicação.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">3. Uma empresa assina um serviço de CRM online, onde ela paga uma taxa mensal por usuário e acessa o software através de um navegador. Qual modelo de serviço em nuvem isso representa?</p>
+            <div class="options">
+                <label><input type="radio" name="q3"> A) IaaS</label>
+                <label><input type="radio" name="q3"> B) PaaS</label>
+                <label data-correct="true"><input type="radio" name="q3"> C) SaaS</label>
+                <label><input type="radio" name="q3"> D) FaaS</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) SaaS</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Software como Serviço (SaaS) fornece um produto completo que é executado e gerenciado pelo provedor de serviços. O cliente final simplesmente usa o software, sem se preocupar com a infraestrutura ou a plataforma. Muitas soluções no AWS Marketplace são SaaS.</div>
+            </div>
+        </div>
+		
+		<div class="question-container">
+            <p class="question-text">4. O Amazon RDS automatiza tarefas como patches do S.O. do banco de dados, backups e failover, permitindo que o usuário se concentre nos dados e no schema. Isso o classifica como qual tipo de serviço?</p>
+            <div class="options">
+                <label><input type="radio" name="q4"> A) IaaS</label>
+                <label><input type="radio" name="q4"> B) SaaS</label>
+                <label data-correct="true"><input type="radio" name="q4"> C) PaaS</label>
+                <label><input type="radio" name="q4"> D) On-premises</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) PaaS</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon RDS é um serviço de Plataforma como Serviço (PaaS) porque a AWS gerencia a plataforma subjacente (hardware, S.O., instalação do banco de dados), enquanto o cliente gerencia o que está "em cima" da plataforma (seus dados, schemas e otimização de consultas).</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">5. Qual serviço da AWS é o exemplo mais fundamental de Infraestrutura como Serviço (IaaS)?</p>
+            <div class="options">
+                <label><input type="radio" name="q5"> A) AWS Lambda</label>
+                <label><input type="radio" name="q5"> B) Amazon S3</label>
+                <label data-correct="true"><input type="radio" name="q5"> C) Amazon EC2</label>
+                <label><input type="radio" name="q5"> D) Amazon RDS</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Amazon EC2</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon EC2 oferece servidores virtuais (infraestrutura) sobre os quais os clientes têm controle total para instalar sistemas operacionais e aplicações. Isso é a definição de IaaS.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">6. No modelo de responsabilidade compartilhada, qual modelo de serviço em nuvem exige a MENOR quantidade de gerenciamento de infraestrutura por parte do cliente?</p>
+            <div class="options">
+                <label><input type="radio" name="q6"> A) IaaS</label>
+                <label><input type="radio" name="q6"> B) PaaS</label>
+                <label data-correct="true"><input type="radio" name="q6"> C) SaaS</label>
+                <label><input type="radio" name="q6"> D) On-premises</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) SaaS</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Com o SaaS, o provedor gerencia praticamente tudo (aplicação, dados, plataforma, infraestrutura). O cliente apenas usa o software. Com PaaS, o cliente ainda gerencia a aplicação e os dados. Com IaaS, ele gerencia a aplicação, dados, S.O., etc.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">7. O AWS Lambda, que executa código em resposta a eventos sem nenhum gerenciamento de servidor, é um exemplo de qual modelo de computação?</p>
+            <div class="options">
+                <label><input type="radio" name="q7"> A) IaaS</label>
+                <label><input type="radio" name="q7"> B) SaaS</label>
+                <label><input type="radio" name="q7"> C) CaaS (Container as a Service)</label>
+                <label data-correct="true"><input type="radio" name="q7"> D) Serverless (ou FaaS - Função como Serviço)</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Serverless (ou FaaS - Função como Serviço)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Serverless é um modelo onde o provedor de nuvem gerencia dinamicamente a alocação de recursos de máquina. O Lambda é o principal exemplo de FaaS, um subconjunto de serverless, onde você se preocupa apenas com o código da sua função.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">8. Uma empresa que utiliza Amazon EC2 (IaaS) é responsável por qual das seguintes tarefas, de acordo com o modelo de responsabilidade compartilhada?</p>
+            <div class="options">
+                <label><input type="radio" name="q8"> A) Manutenção do hardware físico do servidor.</label>
+                <label data-correct="true"><input type="radio" name="q8"> B) Aplicação de patches de segurança no sistema operacional instalado na instância.</label>
+                <label><input type="radio" name="q8"> C) Garantir a segurança física do data center.</label>
+                <label><input type="radio" name="q8"> D) Gerenciar o hypervisor de virtualização.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Aplicação de patches de segurança no sistema operacional instalado na instância.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> No modelo IaaS, o cliente tem controle e responsabilidade sobre o sistema operacional convidado, incluindo a instalação de atualizações e patches de segurança. A AWS é responsável pela infraestrutura subjacente.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">9. Qual modelo de serviço oferece o maior grau de controle sobre a configuração da rede e do sistema operacional?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q9"> A) IaaS</label>
+                <label><input type="radio" name="q9"> B) PaaS</label>
+                <label><input type="radio" name="q9"> C) SaaS</label>
+                <label><input type="radio" name="q9"> D) FaaS</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) IaaS</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A Infraestrutura como Serviço (IaaS) fornece os blocos de construção mais básicos, dando ao cliente a máxima flexibilidade e controle sobre a configuração de seus recursos, incluindo rede (VPC, sub-redes) e o sistema operacional em suas máquinas virtuais (EC2).</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">10. Uma empresa quer migrar seu banco de dados Oracle on-premises para a nuvem, mas deseja que a AWS gerencie a aplicação de patches e os backups. Qual serviço representa o modelo PaaS para esta necessidade?</p>
+            <div class="options">
+                <label><input type="radio" name="q10"> A) Instalar o Oracle em uma instância EC2.</label>
+                <label><input type="radio" name="q10"> B) Usar o Amazon DynamoDB.</label>
+                <label><input type="radio" name="q10"> C) Usar o AWS Database Migration Service (DMS).</label>
+                <label data-correct="true"><input type="radio" name="q10"> D) Usar o Amazon RDS for Oracle.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Usar o Amazon RDS for Oracle.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Amazon RDS é um serviço de Plataforma como Serviço (PaaS) que permite executar um banco de dados Oracle gerenciado pela AWS, que cuida das tarefas administrativas, enquanto você foca nos seus dados. Instalar em EC2 seria IaaS.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function checkAnswer(button, expectedCorrectCount = 1) {
+            const questionContainer = button.closest('.question-container');
+            const explanationDiv = questionContainer.querySelector('.answer-explanation');
+            const optionsDiv = questionContainer.querySelector('.options');
+            
+            button.disabled = true;
+
+            let selectedInputs = [];
+            const inputType = expectedCorrectCount > 1 ? 'checkbox' : 'radio';
+            selectedInputs = Array.from(optionsDiv.querySelectorAll(`input[type="${inputType}"]:checked`));
+
+            if (selectedInputs.length === 0) {
+                alert('Por favor, selecione uma resposta antes de verificar.');
+                button.disabled = false;
+                return;
+            }
+
+            const allLabels = optionsDiv.querySelectorAll('label');
+            allLabels.forEach(label => {
+                const input = label.querySelector('input');
+                const isSelected = selectedInputs.some(sel => sel === input);
+                const isCorrect = label.hasAttribute('data-correct');
+
+                if (isCorrect) {
+                    label.style.backgroundColor = 'rgba(40, 167, 69, 0.7)';
+                    label.style.borderColor = '#28a745';
+                }
+                
+                if (isSelected && !isCorrect) {
+                     label.style.backgroundColor = 'rgba(220, 53, 69, 0.7)';
+                     label.style.borderColor = '#dc3545';
+                }
+            });
+
+            explanationDiv.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

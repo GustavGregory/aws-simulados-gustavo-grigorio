@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado AWS: Suporte & Monitoramento</title>
+    <style>
+        body {
+            background-color: #000000; /* Fundo TOTALMENTE PRETO */
+            color: #e0e0e0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #121212;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        h1 {
+            text-align: center;
+            color: #ff9900; /* Cor Laranja AWS */
+            border-bottom: 2px solid #ff9900;
+            padding-bottom: 10px;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .question-container {
+            background-color: #1e1e1e;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 5px solid #5865f2;
+        }
+        .question-text {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #FFD700; /* Amarelo/Dourado */
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 5px;
+            border: 2px solid #444;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .options label:hover {
+            background-color: #333;
+            border-color: #ff9900;
+        }
+        .options input[type="radio"], .options input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+            accent-color: #ff9900;
+        }
+        button {
+            background-color: #ff9900;
+            color: #111;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e68a00;
+        }
+        .answer-explanation {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0a0a0a;
+            border: 1px solid #43b581;
+            border-radius: 5px;
+            display: none; /* Inicia oculto */
+        }
+        .answer-line {
+            font-weight: bold;
+            color: #28a745; /* Verde para a resposta correta */
+        }
+        .explanation-line {
+            margin-top: 12px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>👨‍🔧 Simulado: Suporte & Monitoramento 📊</h1>
+        <div class="controls">
+            <button onclick="location.reload()">Refazer Simulado</button>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">1. Qual é a principal diferença entre o Amazon CloudWatch e o AWS CloudTrail?</p>
+            <div class="options">
+                <label><input type="radio" name="q1"> A) CloudWatch é para segurança, CloudTrail é para desempenho.</label>
+                <label data-correct="true"><input type="radio" name="q1"> B) CloudWatch monitora o desempenho dos recursos (métricas/logs), enquanto CloudTrail registra as chamadas de API (auditoria).</label>
+                <label><input type="radio" name="q1"> C) CloudWatch é gratuito, CloudTrail é um serviço pago.</label>
+                <label><input type="radio" name="q1"> D) CloudWatch armazena logs no S3, CloudTrail armazena logs no DynamoDB.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) CloudWatch monitora o desempenho dos recursos (métricas/logs), enquanto CloudTrail registra as chamadas de API (auditoria).</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Esta é a distinção fundamental: CloudWatch foca em dados de performance e operacionais (como logs de aplicação e métricas de CPU) para responder à pergunta "O que está acontecendo com meu recurso?". CloudTrail foca na governança e auditoria, respondendo "Quem fez o quê na minha conta?".</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">2. Um desenvolvedor quer criar um painel customizado para visualizar a utilização da CPU, o tráfego de rede e o número de leituras de disco de várias instâncias EC2 em uma única tela. Qual recurso do Amazon CloudWatch ele deve usar?</p>
+            <div class="options">
+                <label><input type="radio" name="q2"> A) Alarmes</label>
+                <label><input type="radio" name="q2"> B) Métricas</label>
+                <label data-correct="true"><input type="radio" name="q2"> C) Dashboards</label>
+                <label><input type="radio" name="q2"> D) CloudWatch Logs</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Dashboards</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Os Dashboards do CloudWatch são o recurso projetado especificamente para agregar e visualizar gráficos de métricas de diferentes fontes em uma única tela, permitindo o monitoramento centralizado e proativo.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">3. Qual pilar do AWS Trusted Advisor recomendaria a ativação do MFA na conta raiz e a verificação de portas abertas em Security Groups?</p>
+            <div class="options">
+                <label><input type="radio" name="q3"> A) Otimização de Custos</label>
+                <label><input type="radio" name="q3"> B) Performance</label>
+                <label data-correct="true"><input type="radio" name="q3"> C) Segurança</label>
+                <label><input type="radio" name="q3"> D) Tolerância a Falhas</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Segurança</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O pilar de Segurança do Trusted Advisor foca em apontar falhas e configurações que não seguem as melhores práticas de segurança da AWS, como a falta de MFA na conta raiz e permissões muito abertas.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">4. Uma empresa precisa de suporte técnico 24/7 via e-mail, chat e telefone, além de acesso a todas as verificações do AWS Trusted Advisor. Qual é o plano de suporte mínimo que atende a estes requisitos?</p>
+            <div class="options">
+                <label><input type="radio" name="q4"> A) Basic</label>
+                <label><input type="radio" name="q4"> B) Developer</label>
+                <label data-correct="true"><input type="radio" name="q4"> C) Business</label>
+                <label><input type="radio" name="q4"> D) Enterprise</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Business</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O plano de suporte Business é o primeiro nível que oferece suporte em todos os canais (e-mail, chat, telefone) 24/7 e o acesso completo a todas as verificações do AWS Trusted Advisor.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">5. Onde o AWS CloudTrail armazena os logs de eventos para retenção de longo prazo e análise de segurança?</p>
+            <div class="options">
+                <label><input type="radio" name="q5"> A) Em uma tabela do Amazon DynamoDB</label>
+                <label data-correct="true"><input type="radio" name="q5"> B) Em um bucket do Amazon S3</label>
+                <label><input type="radio" name="q5"> C) Dentro do Amazon CloudWatch Logs por padrão</label>
+                <label><input type="radio" name="q5"> D) Em um volume do Amazon EBS</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Em um bucket do Amazon S3</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Ao criar uma "trilha" (trail) no CloudTrail, você especifica um bucket S3 onde os arquivos de log contendo os eventos da sua conta serão entregues de forma segura para armazenamento e análise posterior.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">6. Qual é a principal função de um Gerente Técnico de Contas (TAM), disponível nos planos de suporte Enterprise?</p>
+            <div class="options">
+                <label><input type="radio" name="q6"> A) Resolver problemas de faturamento.</label>
+                <label><input type="radio" name="q6"> B) Fornecer suporte técnico reativo para casos urgentes.</label>
+                <label data-correct="true"><input type="radio" name="q6"> C) Fornecer orientação proativa, ajudar no design de arquiteturas e coordenar acesso a especialistas.</label>
+                <label><input type="radio" name="q6"> D) Criar e gerenciar usuários IAM para a empresa.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Fornecer orientação proativa, ajudar no design de arquiteturas e coordenar acesso a especialistas.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O TAM atua como um consultor estratégico e ponto de contato principal com a AWS, fornecendo orientação proativa para otimizar o ambiente, muito além do suporte reativo a problemas.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">7. Um alarme do CloudWatch entrou no estado `ALARM`. Qual serviço é comumente usado como um "alvo" (target) para enviar uma notificação por e-mail ou SMS para a equipe de operações?</p>
+            <div class="options">
+                <label data-correct="true"><input type="radio" name="q7"> A) Amazon Simple Notification Service (Amazon SNS)</label>
+                <label><input type="radio" name="q7"> B) Amazon Simple Queue Service (Amazon SQS)</label>
+                <label><input type="radio" name="q7"> C) AWS CloudTrail</label>
+                <label><input type="radio" name="q7"> D) AWS Lambda</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A) Amazon Simple Notification Service (Amazon SNS)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O CloudWatch Alarms integra-se nativamente com o Amazon SNS. Você pode configurar uma ação de alarme para publicar uma mensagem em um tópico SNS, que por sua vez envia a notificação para seus assinantes (e-mails, SMS, etc.).</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">8. Qual pilar do AWS Trusted Advisor ajuda a identificar instâncias EC2 com baixa utilização de CPU ou volumes EBS desanexados?</p>
+            <div class="options">
+                <label><input type="radio" name="q8"> A) Performance</label>
+                <label><input type="radio" name="q8"> B) Segurança</label>
+                <label data-correct="true"><input type="radio" name="q8"> C) Otimização de Custos</label>
+                <label><input type="radio" name="q8"> D) Tolerância a Falhas</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Otimização de Custos</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O pilar de Otimização de Custos é responsável por identificar recursos ociosos ou subutilizados que estão gerando custos desnecessários, como instâncias EC2 com baixo uso de CPU.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">9. Qual das seguintes tarefas NÃO é uma função do AWS CloudTrail?</p>
+            <div class="options">
+                <label><input type="radio" name="q9"> A) Registrar quem criou uma instância EC2.</label>
+                <label><input type="radio" name="q9"> B) Rastrear alterações nas políticas do IAM.</label>
+                <label><input type="radio" name="q9"> C) Fornecer uma trilha de auditoria para conformidade.</label>
+                <label data-correct="true"><input type="radio" name="q9"> D) Medir a utilização da CPU de uma instância EC2 em tempo real.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Medir a utilização da CPU de uma instância EC2 em tempo real.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Medir métricas de desempenho em tempo real, como a utilização da CPU, é uma função do Amazon CloudWatch. O CloudTrail registra as ações (chamadas de API), não as métricas de performance.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">10. Uma startup está desenvolvendo e testando sua primeira aplicação na AWS e precisa de orientação sobre as melhores práticas de arquitetura. Qual é o plano de suporte mais econômico que oferece esse tipo de orientação?</p>
+            <div class="options">
+                <label><input type="radio" name="q10"> A) Basic</label>
+                <label data-correct="true"><input type="radio" name="q10"> B) Developer</label>
+                <label><input type="radio" name="q10"> C) Business</label>
+                <label><input type="radio" name="q10"> D) Enterprise On-Ramp</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Developer</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O plano Developer é ideal para experimentação e oferece orientação de melhores práticas e suporte à arquitetura de blocos fundamentais, sendo o mais econômico dos planos pagos.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">11. O que é uma "métrica" no contexto do Amazon CloudWatch?</p>
+            <div class="options">
+                <label><input type="radio" name="q11"> A) Um arquivo de log gerado por uma aplicação.</label>
+                <label><input type="radio" name="q11"> B) Um evento de chamada de API registrado pelo CloudTrail.</label>
+                <label data-correct="true"><input type="radio" name="q11"> C) Uma variável de série temporal que representa um ponto de dados de um recurso (ex: utilização de CPU).</label>
+                <label><input type="radio" name="q11"> D) Uma recomendação de otimização do Trusted Advisor.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Uma variável de série temporal que representa um ponto de dados de um recurso (ex: utilização de CPU).</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> As métricas são o fundamento do CloudWatch. Elas são os pontos de dados (variáveis) coletados de seus recursos ao longo do tempo, que podem ser visualizados em gráficos e monitorados por alarmes.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">12. Qual pilar do AWS Trusted Advisor ajuda a identificar a falta de backups para volumes EBS ou instâncias RDS?</p>
+            <div class="options">
+                <label><input type="radio" name="q12"> A) Segurança</label>
+                <label><input type="radio" name="q12"> B) Otimização de Custos</label>
+                <label><input type="radio" name="q12"> C) Performance</label>
+                <label data-correct="true"><input type="radio" name="q12"> D) Tolerância a Falhas</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Tolerância a Falhas</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O pilar de Tolerância a Falhas foca em recomendações para aumentar a resiliência. A falta de backups é um risco direto à capacidade de se recuperar de uma falha, por isso pertence a este pilar.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">13. Qual das seguintes opções é um benefício de se usar o CloudWatch Logs?</p>
+            <div class="options">
+                <label><input type="radio" name="q13"> A) Migrar bancos de dados para a AWS com mínimo downtime.</label>
+                <label><input type="radio" name="q13"> B) Estimar custos de infraestrutura antes da implantação.</label>
+                <label data-correct="true"><input type="radio" name="q13"> C) Centralizar, monitorar e analisar arquivos de log de diversas fontes.</label>
+                <label><input type="radio" name="q13"> D) Receber suporte técnico proativo de um especialista da AWS.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Centralizar, monitorar e analisar arquivos de log de diversas fontes.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A principal função do CloudWatch Logs é agregar arquivos de log de múltiplas fontes (EC2, Lambda, on-premises, etc.) em um local centralizado para pesquisa, análise e monitoramento.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">14. Qual plano de suporte da AWS é necessário para ter um tempo de resposta de 15 minutos ou menos para casos de negócio críticos?</p>
+            <div class="options">
+                <label><input type="radio" name="q14"> A) Developer</label>
+                <label><input type="radio" name="q14"> B) Business</label>
+                <label><input type="radio" name="q14"> C) Enterprise On-Ramp</label>
+                <label data-correct="true"><input type="radio" name="q14"> D) Enterprise de Grande Porte (Enterprise)</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Enterprise de Grande Porte (Enterprise)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O tempo de resposta mais rápido (&lt; 15 minutos para casos críticos) é uma característica do plano de suporte mais alto, o Enterprise Support.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">15. Um evento do CloudTrail mostra que um usuário IAM excluiu um bucket S3. Quais informações essenciais estarão nesse registro de evento para uma investigação? (Selecione DUAS)</p>
+            <div class="options">
+                <label data-correct="true"><input type="checkbox" name="q15"> A) A identidade do usuário IAM que realizou a ação.</label>
+                <label><input type="checkbox" name="q15"> B) O conteúdo dos arquivos que foram excluídos.</label>
+                <label><input type="checkbox" name="q15"> C) Uma métrica de desempenho do S3 no momento da exclusão.</label>
+                <label data-correct="true"><input type="checkbox" name="q15"> D) O endereço IP de origem de onde a chamada de API foi feita.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A e D</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O CloudTrail captura os metadados da chamada de API, o que inclui quem fez a chamada (identidade do chamador) e de onde ela veio (endereço IP de origem), mas não o conteúdo dos dados em si. Métricas de desempenho são do CloudWatch.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">16. Uma empresa quer receber uma única fatura para suas 10 contas AWS e aproveitar descontos por volume. Qual serviço ou recurso permite isso?</p>
+            <div class="options">
+                <label><input type="radio" name="q16"> A) AWS Budgets</label>
+                <label><input type="radio" name="q16"> B) AWS Cost Explorer</label>
+                <label data-correct="true"><input type="radio" name="q16"> C) Cobrança Consolidada no AWS Organizations</label>
+                <label><input type="radio" name="q16"> D) AWS Trusted Advisor</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Cobrança Consolidada no AWS Organizations</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A Cobrança Consolidada é um recurso do AWS Organizations que permite centralizar o faturamento de múltiplas contas e agregar o uso para se qualificar para descontos por volume.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">17. Qual recurso do CloudWatch permite que você colete métricas de sistemas on-premises?</p>
+            <div class="options">
+                <label><input type="radio" name="q17"> A) Isso não é possível, o CloudWatch monitora apenas recursos AWS.</label>
+                <label><input type="radio" name="q17"> B) CloudWatch Alarms</label>
+                <label data-correct="true"><input type="radio" name="q17"> C) O Agente Unificado do CloudWatch (Unified Agent)</label>
+                <label><input type="radio" name="q17"> D) Dashboards do CloudWatch</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) O Agente Unificado do CloudWatch (Unified Agent)</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Para alcançar uma visão unificada, a AWS fornece o Agente do CloudWatch, que pode ser instalado em servidores on-premises (e em instâncias EC2) para coletar logs e métricas customizadas e enviá-los ao CloudWatch.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">18. Qual das seguintes opções é um benefício incluído no plano de suporte Basic gratuito?</p>
+            <div class="options">
+                <label><input type="radio" name="q18"> A) Acesso 24/7 a engenheiros de suporte na nuvem por telefone.</label>
+                <label><input type="radio" name="q18"> B) Um Gerente Técnico de Contas (TAM) designado.</label>
+                <label data-correct="true"><input type="radio" name="q18"> C) Acesso ao atendimento ao cliente para questões de faturamento e limites de conta.</label>
+                <label><input type="radio" name="q18"> D) Acesso a todas as verificações do AWS Trusted Advisor.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) Acesso ao atendimento ao cliente para questões de faturamento e limites de conta.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O suporte técnico por telefone e o acesso total ao Trusted Advisor são recursos de planos pagos. O plano Basic oferece suporte para questões de conta e faturamento, acesso à documentação e ao Personal Health Dashboard.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">19. Um administrador de segurança precisa garantir que os logs do CloudTrail não possam ser alterados ou excluídos, mesmo por um administrador com acesso total. Qual combinação de serviços pode ajudar?</p>
+            <div class="options">
+                <label><input type="radio" name="q19"> A) CloudTrail e CloudWatch Alarms</label>
+                <label><input type="radio" name="q19"> B) CloudTrail e AWS KMS</label>
+                <label><input type="radio" name="q19"> C) CloudTrail e Amazon GuardDuty</label>
+                <label data-correct="true"><input type="radio" name="q19"> D) CloudTrail, Amazon S3 e Validação de Integridade de Arquivos de Log</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) CloudTrail, Amazon S3 e Validação de Integridade de Arquivos de Log</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O CloudTrail entrega logs a um bucket S3. Você pode habilitar a validação de integridade dos arquivos de log do CloudTrail, que usa hashes criptográficos para detectar se um arquivo de log foi modificado ou excluído após ser entregue pela AWS.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">20. Qual pilar do Trusted Advisor alertaria sobre uma configuração de Amazon RDS Multi-AZ que não está funcionando corretamente?</p>
+            <div class="options">
+                <label><input type="radio" name="q20"> A) Performance</label>
+                <label data-correct="true"><input type="radio" name="q20"> B) Tolerância a Falhas</label>
+                <label><input type="radio" name="q20"> C) Otimização de Custos</label>
+                <label><input type="radio" name="q20"> D) Segurança</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) Tolerância a Falhas</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O Multi-AZ é um recurso de alta disponibilidade e resiliência. Uma falha em sua configuração seria um risco à capacidade do sistema de tolerar falhas, que é o foco deste pilar do Trusted Advisor.</div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-text">21. O que acontece quando um alarme do CloudWatch é acionado porque uma métrica excedeu seu limite?</p>
+            <div class="options">
+                <label><input type="radio" name="q21"> A) Ele automaticamente cria um log no AWS CloudTrail.</label>
+                <label><input type="radio" name="q21"> B) Ele gera uma recomendação no AWS Trusted Advisor.</label>
+                <label><input type="radio" name="q21"> C) Ele envia os logs da aplicação para o Amazon S3.</label>
+                <label data-correct="true"><input type="radio" name="q21"> D) Ele executa as ações pré-configuradas, como enviar uma notificação SNS ou acionar uma ação de Auto Scaling.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Ele executa as ações pré-configuradas, como enviar uma notificação SNS ou acionar uma ação de Auto Scaling.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> A principal função de um alarme é executar ações predefinidas quando seu estado muda (de OK para ALARM, por exemplo). Essas ações são configuradas pelo usuário para automatizar respostas a eventos.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">22. Qual ferramenta é usada para obter relatórios de conformidade de terceiros, como relatórios SOC e ISO, sobre a infraestrutura da AWS?</p>
+            <div class="options">
+                <label><input type="radio" name="q22"> A) AWS Config</label>
+                <label data-correct="true"><input type="radio" name="q22"> B) AWS Artifact</label>
+                <label><input type="radio" name="q22"> C) AWS Security Hub</label>
+                <label><input type="radio" name="q22"> D) AWS CloudTrail</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> B) AWS Artifact</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O AWS Artifact é o serviço que fornece acesso sob demanda a relatórios de segurança e conformidade da AWS, que são essenciais para as auditorias dos clientes.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">23. Qual das seguintes opções é um benefício principal do plano de suporte Business em comparação com o plano Developer?</p>
+            <div class="options">
+                <label><input type="radio" name="q23"> A) Acesso a um TAM dedicado.</label>
+                <label><input type="radio" name="q23"> B) Preços mais baixos para instâncias EC2.</label>
+                <label><input type="radio" name="q23"> C) Acesso ao AWS Personal Health Dashboard.</label>
+                <label data-correct="true"><input type="radio" name="q23"> D) Acesso total às verificações do Trusted Advisor e tempos de resposta mais rápidos para casos de produção.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> D) Acesso total às verificações do Trusted Advisor e tempos de resposta mais rápidos para casos de produção.</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O plano Business eleva significativamente o nível de suporte, desbloqueando todas as verificações do Trusted Advisor e oferecendo SLAs de tempo de resposta muito mais rápidos, inclusive por telefone, adequados para workloads de produção.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">24. Qual recurso opcional do CloudTrail ajuda a identificar atividades anormais na sua conta, como um pico incomum na criação de instâncias EC2?</p>
+            <div class="options">
+                <label><input type="radio" name="q24"> A) CloudTrail Dashboards</label>
+                <label><input type="radio" name="q24"> B) CloudTrail Alarms</label>
+                <label data-correct="true"><input type="radio" name="q24"> C) CloudTrail Insights</label>
+                <label><input type="radio" name="q24"> D) CloudTrail Events</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> C) CloudTrail Insights</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> O CloudTrail Insights é um recurso que, quando ativado, usa machine learning para analisar a atividade de gerenciamento e detectar automaticamente padrões de chamadas de API incomuns.</div>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <p class="question-text">25. Um painel do CloudWatch pode exibir métricas de quais fontes? (Selecione DUAS)</p>
+            <div class="options">
+                <label data-correct="true"><input type="checkbox" name="q25"> A) Múltiplas Regiões da AWS.</label>
+                <label><input type="checkbox" name="q25"> B) Apenas da Região em que o painel foi criado.</label>
+                <label data-correct="true"><input type="checkbox" name="q25"> C) Servidores on-premises que executam o Agente do CloudWatch.</label>
+                <label><input type="checkbox" name="q25"> D) Apenas de instâncias EC2.</label>
+            </div>
+            <button class="check-btn" onclick="checkAnswer(this, 2)">Verificar Resposta</button>
+            <div class="answer-explanation">
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> A e C</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> Os painéis do CloudWatch são globais e podem exibir gráficos de métricas de diferentes Regiões. Além disso, através do Agente Unificado, o CloudWatch pode ingerir métricas de servidores on-premises, proporcionando uma visão unificada.</div>
+            </div>
+        </div>
+
+
+        </div>
+
+    <script>
+        function checkAnswer(button, expectedCorrectCount = 1) {
+            const questionContainer = button.closest('.question-container');
+            const explanationDiv = questionContainer.querySelector('.answer-explanation');
+            const optionsDiv = questionContainer.querySelector('.options');
+            
+            button.disabled = true;
+
+            let selectedInputs = [];
+            const inputType = expectedCorrectCount > 1 ? 'checkbox' : 'radio';
+            selectedInputs = Array.from(optionsDiv.querySelectorAll(`input[type="${inputType}"]:checked`));
+
+            if (selectedInputs.length === 0) {
+                alert('Por favor, selecione uma resposta antes de verificar.');
+                button.disabled = false;
+                return;
+            }
+
+            const allLabels = optionsDiv.querySelectorAll('label');
+            allLabels.forEach(label => {
+                const input = label.querySelector('input');
+                const isSelected = selectedInputs.some(sel => sel === input);
+                const isCorrect = label.hasAttribute('data-correct');
+
+                if (isCorrect) {
+                    label.style.backgroundColor = 'rgba(40, 167, 69, 0.7)';
+                    label.style.borderColor = '#28a745';
+                }
+                
+                if (isSelected && !isCorrect) {
+                     label.style.backgroundColor = 'rgba(220, 53, 69, 0.7)';
+                     label.style.borderColor = '#dc3545';
+                }
+            });
+
+            explanationDiv.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

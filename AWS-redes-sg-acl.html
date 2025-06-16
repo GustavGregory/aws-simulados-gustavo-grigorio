@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado - AWS Cloud Practitioner (CLF-C02)</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #000000;
+            color: #e0e0e0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            padding-top: 80px; /* Espaço para o header fixo */
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #121212;
+            z-index: 1000;
+            padding: 10px 0;
+            border-bottom: 2px solid #ff9900;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .timer {
+            color: #FFD700;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+        }
+        .progress-bar-container {
+            width: 80%;
+            max-width: 750px;
+            margin: 10px auto 0 auto;
+            background-color: #444;
+            border-radius: 10px;
+            height: 10px;
+        }
+        #progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #ff9900;
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #121212;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        h1 {
+            text-align: center;
+            color: #ff9900;
+            margin-top: 0;
+        }
+        .question-container {
+            background-color: #1e1e1e;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 5px solid #5865f2;
+            animation: fadeIn 0.7s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .question-text {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 5px;
+            border: 2px solid #444;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .options label:hover {
+            background-color: #333;
+            border-color: #ff9900;
+        }
+        .options input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+            accent-color: #ff9900;
+        }
+        button {
+            background-color: #ff9900;
+            color: #111;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.2s ease-in-out;
+        }
+        button:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+        }
+        .next-btn, .review-controls button {
+            background-color: #5865f2;
+            color: white;
+        }
+        .next-btn:hover, .review-controls button:hover {
+            background-color: #4752c4;
+        }
+        .answer-explanation {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0a0a0a;
+            border: 1px solid #43b581;
+            border-radius: 5px;
+        }
+        .answer-line {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .explanation-line {
+            margin-top: 12px;
+            color: #ccc;
+        }
+        #results-container {
+            text-align: center;
+            padding: 30px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            border: 2px solid #ff9900;
+        }
+        #results-container h2 {
+            border-bottom: none;
+            color: #ff9900;
+        }
+        #score-text, #final-message {
+            font-size: 1.2em;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="timer" id="timer">Tempo Restante: 30:00</div>
+        <div class="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="quiz-header">
+            <h1>🛜 Rede e Segurança 🛡️</h1>
+        </div>
+        
+        <div id="quiz-body">
+            </div>
+        
+        <div id="results-container" class="hidden">
+            <h2>Resultados Finais</h2>
+            <p id="score-text" style="font-size: 1.3em;"></p>
+            <p id="final-message" style="font-size: 1.2em; font-weight: bold;"></p>
+            <div class="controls">
+                <button onclick="reviewQuiz()">Corrigir Simulado</button>
+                <button onclick="location.reload()">Refazer Simulado</button>
+            </div>
+        </div>
+
+        <div id="review-controls" class="controls hidden">
+             <button onclick="location.reload()">Refazer Simulado</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "1. O que é um Grupo de Segurança (Security Group)?",
+                options: [
+                    "A) Um firewall que opera no nível da sub-rede, controlando todo o tráfego que entra e sai dela.",
+                    "B) Um firewall virtual que opera no nível da instância EC2 para controlar o tráfego de entrada e saída.",
+                    "C) Um serviço para agrupar usuários com as mesmas permissões de rede.",
+                    "D) Um componente da VPC que permite a conexão com a internet."
+                ],
+                correct: "B",
+                explanation: "Grupos de Segurança são a primeira linha de defesa no nível da instância (ENI), controlando o tráfego que pode chegar e sair dela."
+            },
+            {
+                question: "2. O que significa dizer que um Grupo de Segurança é \"stateful\"?",
+                options: [
+                    "A) Que ele só permite regras de negação (Deny).",
+                    "B) Que se você permitir uma solicitação de entrada, o tráfego de resposta é automaticamente permitido, independentemente das regras de saída.",
+                    "C) Que você precisa criar regras separadas para o tráfego de entrada e de resposta de saída.",
+                    "D) Que ele não mantém o estado das conexões de rede."
+                ],
+                correct: "B",
+                explanation: "\"Stateful\" significa que o firewall se \"lembra\" das conexões. Se uma conexão de entrada é permitida, a resposta dessa mesma conexão pode sair sem precisar de uma regra de saída explícita."
+            },
+            {
+                question: "3. O que é uma Lista de Controle de Acesso de Rede (Network ACL)?",
+                options: [
+                    "A) Um firewall que opera no nível da instância.",
+                    "B) Um serviço de DNS para a VPC.",
+                    "C) Uma camada de segurança que atua como um firewall para controlar o tráfego de entrada e saída de uma ou mais sub-redes.",
+                    "D) Um balanceador de carga de rede."
+                ],
+                correct: "C",
+                explanation: "As NACLs são a camada de defesa no nível da sub-rede, atuando como os \"oficiais de controle de passaporte\" na fronteira da sua sub-rede."
+            },
+            {
+                question: "4. O que significa dizer que uma Network ACL é \"stateless\"?",
+                options: [
+                    "A) Que ela permite todo o tráfego de retorno automaticamente.",
+                    "B) Que ela não armazena informações sobre as conexões, exigindo regras explícitas tanto para o tráfego de entrada quanto para o de saída.",
+                    "C) Que ela só permite regras de \"Allow\".",
+                    "D) Que ela só verifica o tráfego de entrada."
+                ],
+                correct: "B",
+                explanation: "\"Stateless\" (sem estado) é o oposto de \"stateful\". Se você permitir uma solicitação de entrada (ex: porta 80), precisa criar uma regra de saída separada para permitir a resposta. Ela não se \"lembra\" da solicitação original."
+            },
+            {
+                question: "5. Qual é a principal diferença de escopo de atuação entre um Grupo de Segurança e uma Network ACL?",
+                options: [
+                    "A) Grupos de Segurança são regionais, NACLs são globais.",
+                    "B) Grupos de Segurança controlam tráfego entre VPCs, NACLs controlam tráfego interno.",
+                    "C) Grupos de Segurança só se aplicam a instâncias Windows, NACLs a instâncias Linux.",
+                    "D) Grupos de Segurança atuam no nível da instância, enquanto NACLs atuam no nível da sub-rede."
+                ],
+                correct: "D",
+                explanation: "Esta é a distinção mais importante. A NACL é a primeira barreira de defesa da sub-rede. Se o tráfego passa pela NACL, ele ainda precisa ser permitido pelo Grupo de Segurança para chegar à instância."
+            },
+            {
+                question: "6. Qual é o comportamento padrão de um Grupo de Segurança recém-criado?",
+                options: [
+                    "A) Nega todo o tráfego de entrada e permite todo o tráfego de saída.",
+                    "B) Permite todo o tráfego de entrada e nega todo o tráfego de saída.",
+                    "C) Permite todo o tráfego de entrada e saída.",
+                    "D) Nega todo o tráfego de entrada e saída."
+                ],
+                correct: "A",
+                explanation: "Por padrão, um novo Grupo de Segurança é seguro. Ele bloqueia qualquer tentativa de conexão vinda de fora, mas não restringe as conexões iniciadas pela própria instância para fora."
+            },
+            {
+                question: "7. Qual é o comportamento padrão de uma ACL (Lista de controle de acesso) *PADRÃO* (não customizada)?",
+                options: [
+                    "A) Statefull - Nega todo o tráfego de entrada e saída.",
+                    "B) Stateless - Permite todo o tráfego de entrada, mas nega todo o de saída.",
+                    "C) Stateless - Permite todo o tráfego de entrada e saída.",
+                    "D) Statefull - Nega todo o tráfego de entrada, mas permite todo o de saída."
+                ],
+                correct: "C",
+                explanation: "A NACL padrão que vem com a sua VPC é configurada para permitir todo o tráfego. Uma NACL *customizada*, por outro lado, nega tudo por padrão."
+            },
+            {
+                question: "8. Qual componente da VPC contém regras que determinam para onde o tráfego de rede é direcionado (ex: para um Internet Gateway)?",
+                options: [
+                    "A) Security Group",
+                    "B) Route Table (Tabela de Rotas)",
+                    "C) Network ACL",
+                    "D) VPC Endpoint"
+                ],
+                correct: "B",
+                explanation: "Cada sub-rede em uma VPC deve estar associada a uma tabela de rotas. A tabela de rotas controla o roteamento do tráfego da sub-rede."
+            },
+            {
+                question: "9. Na analogia do texto, o \"porteiro de um prédio\" que verifica uma lista para permitir a entrada representa qual componente?",
+                options: [
+                    "A) Um Grupo de Segurança (Security Group)",
+                    "B) Uma Network ACL (NACL)",
+                    "C) Um Internet Gateway",
+                    "D) Um NAT Gateway"
+                ],
+                correct: "A",
+                explanation: "A analogia do porteiro ilustra perfeitamente o comportamento \"stateful\" de um Grupo de Segurança: ele verifica quem entra, mas \"lembra\" dessa pessoa e a deixa sair sem nova verificação."
+            },
+            {
+                question: "10. Qual componente da VPC é necessário para permitir que recursos em uma sub-rede (pública) se comuniquem com a internet?",
+                options: [
+                    "A) NAT Gateway",
+                    "B) Virtual Private Gateway",
+                    "C) Internet Gateway",
+                    "D) VPC Peering"
+                ],
+                correct: "C",
+                explanation: "Para que uma sub-rede seja considerada pública, sua tabela de rotas deve ter uma rota que aponte para um Internet Gateway (IGW), que é o componente que habilita a comunicação com a internet."
+            },
+            {
+                question: "11. Se você precisa bloquear explicitamente um endereço IP malicioso de acessar qualquer recurso em uma sub-rede inteira, qual seria a ferramenta mais apropriada?",
+                options: [
+                    "A) Uma regra no Security Group",
+                    "B) Uma política do IAM",
+                    "C) Uma regra \"Deny\" na Network ACL",
+                    "D) Uma regra no AWS WAF"
+                ],
+                correct: "C",
+                explanation: "Diferente dos Grupos de Segurança (que só permitem regras \"Allow\"), as Network ACLs permitem criar regras explícitas de \"Deny\". Como elas operam no nível da sub-rede, são ideais para bloquear IPs antes que cheguem a qualquer instância."
+            },
+            {
+                question: "12. Por que a prática de usar sub-redes públicas e privadas é considerada uma boa prática de segurança?",
+                options: [
+                    "A) Porque melhora a performance da rede.",
+                    "B) Porque reduz os custos de transferência de dados.",
+                    "C) Porque permite isolar recursos de backend (como bancos de dados) do acesso direto da internet.",
+                    "D) Porque é um requisito para usar o AWS Auto Scaling."
+                ],
+                correct: "C",
+                explanation: "A separação em camadas (níveis) é um princípio de segurança fundamental. Colocar recursos públicos (como servidores web) na frente e recursos privados (como bancos de dados) atrás, sem acesso direto à internet, reduz a superfície de ataque."
+            },
+            {
+                question: "13. Todas as instâncias EC2 devem estar associadas a pelo menos um:",
+                options: [
+                    "A) Network ACL",
+                    "B) NAT Gateway",
+                    "C) Security Group",
+                    "D) Internet Gateway"
+                ],
+                correct: "C",
+                explanation: "\"Todas as instâncias do EC2 obrigatoriamente estarão dentro de um grupo de segurança\". É um requisito fundamental para controlar o acesso à instância."
+            },
+            {
+                question: "14. Uma solicitação sai da instância A (sub-rede A) e vai para a instância B (sub-rede B). Qual é a sequência correta de firewalls que o pacote encontra na IDA?",
+                options: [
+                    "A) Security Group de A (saída) -> NACL de A (saída) -> NACL de B (entrada) -> Security Group de B (entrada)",
+                    "B) Apenas o Security Group de B (entrada).",
+                    "C) NACL de A (saída) -> Security Group de A (saída) -> Security Group de B (entrada) -> NACL de B (entrada)",
+                    "D) Apenas a NACL de B (entrada)."
+                ],
+                correct: "A",
+                explanation: "O tráfego primeiro precisa sair da instância (SG de saída), depois sair da sub-rede (NACL de saída), entrar na nova sub-rede (NACL de entrada) e, finalmente, entrar na instância de destino (SG de entrada)."
+            },
+            {
+                question: "15. Na viagem de VOLTA do pacote (da instância B para a A), qual componente de segurança se \"lembrará\" da conexão original e permitirá o tráfego de retorno automaticamente?",
+                options: [
+                    "A) A Network ACL da sub-rede A.",
+                    "B) O Internet Gateway.",
+                    "C) A Tabela de Rotas.",
+                    "D) O Grupo de Segurança da instância A."
+                ],
+                correct: "D",
+                explanation: "Esta é a essência do comportamento \"stateful\" dos Grupos de Segurança. O SG da instância A se \"lembra\" que a conexão foi iniciada por ela e, portanto, permite automaticamente o tráfego de resposta."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = {};
+        let timerInterval;
+        const totalQuestions = quizData.length;
+
+        const quizBody = document.getElementById('quiz-body');
+        const resultsContainer = document.getElementById('results-container');
+        const quizHeader = document.getElementById('quiz-header');
+        const reviewControls = document.getElementById('review-controls');
+        const progressBar = document.getElementById('progress-bar');
+
+        function renderQuestion(index) {
+            quizBody.innerHTML = ''; 
+            if (index >= totalQuestions) {
+                showFinalScore();
+                return;
+            }
+
+            const q = quizData[index];
+            const questionContainer = document.createElement('div');
+            questionContainer.className = 'question-container';
+            
+            let optionsHTML = '';
+            q.options.forEach((option, i) => {
+                const optionLetter = String.fromCharCode(65 + i);
+                optionsHTML += `<label><input type="radio" name="q${index}"> ${option}</label>`;
+            });
+
+            questionContainer.innerHTML = `
+                <p class="question-text">${q.question}</p>
+                <div class="options">${optionsHTML}</div>
+                <button class="check-btn" onclick="checkAnswer(this)">Verificar Resposta</button>
+                <div class="answer-explanation hidden">
+                    </div>
+            `;
+            quizBody.appendChild(questionContainer);
+            updateProgressBar();
+        }
+        
+        function checkAnswer(button) {
+            const questionContainer = button.closest('.question-container');
+            const explanationDiv = questionContainer.querySelector('.answer-explanation');
+            const optionsDiv = questionContainer.querySelector('.options');
+            const selectedRadio = optionsDiv.querySelector('input[type="radio"]:checked');
+
+            if (!selectedRadio) {
+                alert('Por favor, selecione uma resposta antes de verificar.');
+                return;
+            }
+            
+            button.style.display = 'none';
+            
+            const selectedLabel = selectedRadio.parentElement;
+            userAnswers[currentQuestionIndex] = selectedLabel.textContent.trim(); 
+            
+            const q = quizData[currentQuestionIndex];
+            const correctOptionText = q.options[q.correct.charCodeAt(0) - 65];
+
+            explanationDiv.innerHTML = `
+                <div class="answer-line"><strong>👉 Resposta Correta:</strong> ${correctOptionText}</div>
+                <div class="explanation-line"><strong>🧠 Explicação:</strong> ${q.explanation}</div>
+                <button class="next-btn" onclick="nextQuestion()">Próxima Pergunta</button>
+            `;
+
+            const isCorrect = selectedLabel.textContent.trim() === correctOptionText;
+            if (isCorrect) {
+                score++;
+            }
+
+            // Aplica estilos
+            optionsDiv.querySelectorAll('label').forEach(label => {
+                const isCorrectLabel = label.textContent.trim() === correctOptionText;
+                if (isCorrectLabel) {
+                    label.style.backgroundColor = 'rgba(40, 167, 69, 0.7)';
+                    label.style.borderColor = '#28a745';
+                }
+                if (label === selectedLabel && !isCorrect) {
+                    label.style.backgroundColor = 'rgba(220, 53, 69, 0.7)';
+                    label.style.borderColor = '#dc3545';
+                }
+                label.querySelector('input').disabled = true;
+            });
+            
+            explanationDiv.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            renderQuestion(currentQuestionIndex);
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+
+        function showFinalScore() {
+            clearInterval(timerInterval);
+            
+            const percentage = (score / totalQuestions) * 100;
+            let message = '';
+
+            if (percentage >= 70) {
+                message = "✅ Parabéns! Você foi aprovado, mas continue estudando!";
+                document.getElementById('final-message').style.color = '#28a745';
+            } else {
+                message = "⚠️ Poxa, que pena. Você falhou! Mas continue estudando.";
+                document.getElementById('final-message').style.color = '#FFD700';
+            }
+            
+            document.getElementById('score-text').innerHTML = `Você acertou <strong>${score}</strong> de <strong>${totalQuestions}</strong> questões. (${percentage.toFixed(1)}%)`;
+            document.getElementById('final-message').innerHTML = message;
+            
+            quizHeader.style.display = 'none';
+            quizBody.style.display = 'none';
+            resultsContainer.classList.remove('hidden');
+        }
+
+        function reviewQuiz() {
+            resultsContainer.classList.add('hidden');
+            quizHeader.style.display = 'block';
+            quizBody.innerHTML = '';
+            
+            quizData.forEach((q, index) => {
+                const questionContainer = document.createElement('div');
+                questionContainer.className = 'question-container';
+                const correctOptionText = q.options[q.correct.charCodeAt(0) - 65];
+
+                let optionsHTML = '';
+                q.options.forEach((option, i) => {
+                    const isCorrect = option === correctOptionText;
+                    const wasUserChoice = userAnswers[index] === option;
+                    let style = '';
+
+                    if (isCorrect) {
+                        style = "background-color: rgba(40, 167, 69, 0.7); border-color: #28a745;";
+                    } else if (wasUserChoice && !isCorrect) {
+                        style = "background-color: rgba(220, 53, 69, 0.7); border-color: #dc3545;";
+                    }
+                    optionsHTML += `<label style="${style}"><input type="radio" name="q${index}" disabled ${wasUserChoice ? 'checked' : ''}> ${option}</label>`;
+                });
+                
+                questionContainer.innerHTML = `
+                    <p class="question-text">${q.question}</p>
+                    <div class="options">${optionsHTML}</div>
+                    <div class="answer-explanation" style="display:block;">
+                        <div class="answer-line"><strong>👉 Resposta Correta:</strong> ${correctOptionText}</div>
+                        <div class="explanation-line"><strong>🧠 Explicação:</strong> ${q.explanation}</div>
+                    </div>
+                `;
+                quizBody.appendChild(questionContainer);
+            });
+            
+            quizBody.style.display = 'block';
+            reviewControls.classList.remove('hidden');
+        }
+        
+        function startTimer(durationInMinutes, display) {
+            let timer = durationInMinutes * 60;
+            timerInterval = setInterval(function () {
+                const minutes = parseInt(timer / 60, 10);
+                const seconds = parseInt(timer % 60, 10);
+
+                display.textContent = `Tempo Restante: ${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+
+                if (--timer < 0) {
+                    clearInterval(timerInterval);
+                    alert('O tempo acabou!');
+                    showFinalScore();
+                }
+            }, 1000);
+        }
+        
+        function updateProgressBar() {
+            const percentage = (currentQuestionIndex / totalQuestions) * 100;
+            progressBar.style.width = percentage + '%';
+        }
+
+        window.onload = function () {
+            const thirtyMinutes = 30;
+            const display = document.querySelector('#timer');
+            startTimer(thirtyMinutes, display);
+            renderQuestion(currentQuestionIndex);
+        };
+    </script>
+
+</body>
+</html>
