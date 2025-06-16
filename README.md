@@ -43,7 +43,7 @@ Se este material te ajudou de alguma forma e você sentir no coração o desejo 
 Você pode fazer uma contribuição de qualquer valor através do PIX abaixo.
 
 <p align="center">
-  <img src="C:\Users\grego\Desktop\simulados aws\AWS-simulado" alt="QR Code PIX" width="200"/>
+  <img src="QR-Code.jpg" alt="QR Code PIX" width="200"/>
 </p>
 
 Muito obrigado pelo seu apoio e bons estudos! 🚀
